@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import './App.css'
 import client from './graphql/apolloClient'
+import 'typeface-roboto'
 
 // Import Views
 import Category from './views/Category'
