@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducers'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+import { ApolloClient, createNetworkInterface, ApolloProvider } from 'react-apollo'
 import './App.css'
 
 // Import Views
@@ -27,10 +28,16 @@ const store = createStore(
   composeEnhancers(applyMiddleware(logger, thunk))
 )
 
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: 'https://jesseweigel.com/graphql',
+  }),
+})
+
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
+      <ApolloProvider client={client} store={store}>
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Home} />
@@ -39,7 +46,7 @@ class App extends Component {
           </Switch>
         </BrowserRouter>
 
-      </Provider>
+      </ApolloProvider>
 
     )
   }
