@@ -4,6 +4,7 @@ import { getCategories } from '../graphql/queries/categories'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout'
 import CategoryView from '../components/CategoryView'
+import { Helmet } from 'react-helmet'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
@@ -25,6 +26,12 @@ class Category extends Component {
     const categories = this.props.data.categories
     return (
       <div>
+        <Helmet>
+          <title>
+            Posts By Categories | Bulletin - Franciscan University of
+            Steubenville
+          </title>
+        </Helmet>
         {categories.edges.map(category => (
           <CategoryView
             key={category.node.id}

@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Loader from '../components/Loader'
 import Grid from 'material-ui/Grid'
 import RenderPost from '../components/renderPostPreview'
+import { Helmet } from 'react-helmet'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
@@ -13,6 +14,9 @@ class Home extends Component {
     const posts = this.props.data.posts
     return (
       <Layout>
+        <Helmet>
+          <title>Home | Bulletin - Franciscan University of Steubenville</title>
+        </Helmet>
         {!posts && <Loader />}
         {posts && (
           <Grid container justify='center'>
