@@ -2,7 +2,7 @@ import { ApolloClient, createNetworkInterface } from 'react-apollo'
 
 // https://wordpress.org/plugins/wp-jwt-auth/
 const networkInterface = createNetworkInterface({
-  uri: 'http://198.199.82.97/graphql'
+  uri: 'https://test1.jesseweigel.com/demo/graphql'
 })
 
 const client = new ApolloClient({

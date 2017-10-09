@@ -36,7 +36,7 @@ class PostDetail extends Component {
         <img
           alt=''
           style={{ height: '600px', width: '800px' }}
-          src={post.featuredImage.sourceUrl}
+          src={post.featuredImage && post.featuredImage.sourceUrl}
         />
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
         <h4>Author: {post.author.name}</h4>
