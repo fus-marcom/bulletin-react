@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withStyles } from 'material-ui/styles'
+import { withStyles, MuiThemeProvider, createMuiTheme﻿ } from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar'
@@ -11,10 +11,36 @@ import MenuIcon from 'material-ui-icons/Menu'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import { ListItem, ListItemText } from 'material-ui/List'
 import { Link } from 'react-router-dom'
+import MoreVertIcon from 'material-ui-icons/MoreVert';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      "50": "#21412a",
+      "100": "#21412a",
+      "200": "#21412a",
+      "300": "#21412a",
+      "400": "#21412a",
+      "500": "#21412a",
+      "600": "#21412a",
+      "700": "#21412a",
+      "800": "#21412a",
+      "900": "#21412a",
+      "A100": "#21412a",
+      "A200": "#21412a",
+      "A400": "#21412a",
+      "A700": "#21412a",
+      "contrastDefaultColor": "light"
+    }
+  },
+})
 
 const drawerWidth = 250
 
 const styles = theme => ({
+  flex: {
+    flex: 1
+  },
   link: {
     textDecoration: 'none'
   },
@@ -112,69 +138,74 @@ class Layout extends Component {
   render () {
     const classes = this.props.classes
     return (
-      <div className={classes.root}>
-        <div className={classes.appFrame}>
-          <AppBar
-            className={classNames(
-              classes.appBar,
-              this.state.open && classes.appBarShift
-            )}
-          >
-            <Toolbar disableGutters={!this.state.open}>
-              <IconButton
-                color='contrast'
-                aria-label='open drawer'
-                onClick={this.handleDrawerOpen}
-                className={classNames(
-                  classes.menuButton,
-                  this.state.open && classes.hide
-                )}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography type='title' color='inherit' noWrap>
-                FUS Bulletin
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            type='persistent'
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            open={this.state.open}
-          >
-            <div className={classes.drawerInner}>
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={this.handleDrawerClose}>
-                  <ChevronLeftIcon />
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <div className={classes.appFrame}>
+            <AppBar
+              className={classNames(
+                classes.appBar,
+                this.state.open && classes.appBarShift
+              )}
+            >
+              <Toolbar disableGutters={!this.state.open}>
+                <IconButton
+                  color='contrast'
+                  aria-label='open drawer'
+                  onClick={this.handleDrawerOpen}
+                  className={classNames(
+                    classes.menuButton,
+                    this.state.open && classes.hide
+                  )}
+                >
+                  <MenuIcon />
                 </IconButton>
+                <Typography type='title' color='inherit' className={classes.flex} noWrap>
+                  FUS Bulletin
+                </Typography>
+                <IconButton color="contrast" aria-label="More">
+                  <MoreVertIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+            <Drawer
+              type='persistent'
+              classes={{
+                paper: classes.drawerPaper
+              }}
+              open={this.state.open}
+            >
+              <div className={classes.drawerInner}>
+                <div className={classes.drawerHeader}>
+                  <IconButton onClick={this.handleDrawerClose}>
+                    <ChevronLeftIcon />
+                  </IconButton>
+                </div>
+                <Divider />
+                <Link to='/' className={classes.link}>
+                  <ListItem button>
+                    <ListItemText primary='Home' />
+                  </ListItem>
+                </Link>
+                <Divider />
+                <Link to='/categories' className={classes.link}>
+                  <ListItem button>
+                    <ListItemText primary='Categories' />
+                  </ListItem>
+                </Link>
+                <Divider />
               </div>
-              <Divider />
-              <Link to='/' className={classes.link}>
-                <ListItem button>
-                  <ListItemText primary='Home' />
-                </ListItem>
-              </Link>
-              <Divider />
-              <Link to='/categories' className={classes.link}>
-                <ListItem button>
-                  <ListItemText primary='Categories' />
-                </ListItem>
-              </Link>
-              <Divider />
-            </div>
-          </Drawer>
-          <main
-            className={classNames(
-              classes.content,
-              this.state.open && classes.contentShift
-            )}
-          >
-            {this.props.children}
-          </main>
+            </Drawer>
+            <main
+              className={classNames(
+                classes.content,
+                this.state.open && classes.contentShift
+              )}
+            >
+              {this.props.children}
+            </main>
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }
