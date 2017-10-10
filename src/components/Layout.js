@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { withStyles, MuiThemeProvider, createMuiTheme﻿ } from 'material-ui/styles'
+import {
+  withStyles,
+  MuiThemeProvider,
+  createMuiTheme
+} from 'material-ui/styles'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar'
@@ -11,28 +15,28 @@ import MenuIcon from 'material-ui-icons/Menu'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import { ListItem, ListItemText } from 'material-ui/List'
 import { Link } from 'react-router-dom'
-import MoreVertIcon from 'material-ui-icons/MoreVert';
+import MoreVertIcon from 'material-ui-icons/MoreVert'
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      "50": "#21412a",
-      "100": "#21412a",
-      "200": "#21412a",
-      "300": "#21412a",
-      "400": "#21412a",
-      "500": "#21412a",
-      "600": "#21412a",
-      "700": "#21412a",
-      "800": "#21412a",
-      "900": "#21412a",
-      "A100": "#21412a",
-      "A200": "#21412a",
-      "A400": "#21412a",
-      "A700": "#21412a",
-      "contrastDefaultColor": "light"
+      '50': '#21412a',
+      '100': '#21412a',
+      '200': '#21412a',
+      '300': '#21412a',
+      '400': '#21412a',
+      '500': '#21412a',
+      '600': '#21412a',
+      '700': '#21412a',
+      '800': '#21412a',
+      '900': '#21412a',
+      A100: '#21412a',
+      A200: '#21412a',
+      A400: '#21412a',
+      A700: '#21412a',
+      contrastDefaultColor: 'light'
     }
-  },
+  }
 })
 
 const drawerWidth = 250
@@ -115,6 +119,10 @@ const styles = theme => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
+  },
+  image: {
+    height: '100%',
+    width: '100%'
   }
 })
 
@@ -159,10 +167,15 @@ class Layout extends Component {
                 >
                   <MenuIcon />
                 </IconButton>
-                <Typography type='title' color='inherit' className={classes.flex} noWrap>
+                <Typography
+                  type='title'
+                  color='inherit'
+                  className={classes.flex}
+                  noWrap
+                >
                   FUS Bulletin
                 </Typography>
-                <IconButton color="contrast" aria-label="More">
+                <IconButton color='contrast' aria-label='More'>
                   <MoreVertIcon />
                 </IconButton>
               </Toolbar>
@@ -176,6 +189,13 @@ class Layout extends Component {
             >
               <div className={classes.drawerInner}>
                 <div className={classes.drawerHeader}>
+                  <ListItem>
+                    <img
+                      className={classes.image}
+                      alt='logo'
+                      src='https://franciscan.university/img/side-nav-logo.jpg'
+                    />
+                  </ListItem>
                   <IconButton onClick={this.handleDrawerClose}>
                     <ChevronLeftIcon />
                   </IconButton>
