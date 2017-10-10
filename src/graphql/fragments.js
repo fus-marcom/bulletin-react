@@ -14,3 +14,14 @@ export const postFragment = gql`
     }
   }
 `
+
+export const categoriesFragment = gql`
+  fragment CategoryData on categoriesConnection {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+`

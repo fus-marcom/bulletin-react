@@ -4,10 +4,17 @@ import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
+import { blue, grey } from 'material-ui/colors'
 
 const styles = {
   card: {
     marginBottom: 15
+  },
+  titleColor: {
+    color: blue[800]
+  },
+  dateColor: {
+    color: grey[500]
   },
   media: {
     height: 500
@@ -29,14 +36,22 @@ class PostPreview extends React.Component {
     const date = new Date(this.props.date).toLocaleDateString()
     return (
       <Card className={classes.card}>
-        {this.props.imageURL &&
+        {this.props.imageURL && (
           <CardMedia className={classes.media} image={this.props.imageURL} />
-        }
+        )}
         <CardContent>
-          <Typography type='headline' component='h2'>
+          <Typography
+            className={classes.titleColor}
+            type='headline'
+            component='h2'
+          >
             {this.props.title}
           </Typography>
-          <Typography type='subheading' component='h3'>
+          <Typography
+            className={classes.dateColor}
+            type='subheading'
+            component='h3'
+          >
             {date}
           </Typography>
         </CardContent>

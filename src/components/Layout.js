@@ -4,6 +4,7 @@ import {
   MuiThemeProvider,
   createMuiTheme
 } from 'material-ui/styles'
+import { graphql } from 'react-apollo'
 import classNames from 'classnames'
 import Drawer from 'material-ui/Drawer'
 import AppBar from 'material-ui/AppBar'
@@ -13,9 +14,15 @@ import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
-import { ListItem, ListItemText } from 'material-ui/List'
+import ListSubheader from 'material-ui/List/ListSubheader'
+import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
+import PrintIcon from 'material-ui-icons/Print'
+import DashBoardIcon from 'material-ui-icons/Dashboard'
+import SearchIcon from 'material-ui-icons/Search'
+import AlarmClock from 'material-ui-icons/Alarm'
+import { getAllCategories } from '../graphql/queries/categories'
 
 const theme = createMuiTheme({
   palette: {
@@ -176,6 +183,15 @@ class Layout extends Component {
                   FUS Bulletin
                 </Typography>
                 <IconButton color='contrast' aria-label='More'>
+                  <SearchIcon />
+                </IconButton>
+                <IconButton color='contrast' aria-label='More'>
+                  <DashBoardIcon />
+                </IconButton>
+                <IconButton color='contrast' aria-label='More'>
+                  <PrintIcon />
+                </IconButton>
+                <IconButton color='contrast' aria-label='More'>
                   <MoreVertIcon />
                 </IconButton>
               </Toolbar>
@@ -201,9 +217,13 @@ class Layout extends Component {
                   </IconButton>
                 </div>
                 <Divider />
+                <ListSubheader>Current Bulletin</ListSubheader>
                 <Link to='/' className={classes.link}>
                   <ListItem button>
-                    <ListItemText primary='Home' />
+                    <ListItemIcon>
+                      <AlarmClock />
+                    </ListItemIcon>
+                    <ListItemText inset secondary='Take Action' />
                   </ListItem>
                 </Link>
                 <Divider />
@@ -212,6 +232,17 @@ class Layout extends Component {
                     <ListItemText primary='Categories' />
                   </ListItem>
                 </Link>
+                {!this.props.data.loading &&
+                  this.props.data.categories.edges.map(category => (
+                    <Link
+                      to={`/category/${category.node.id}`}
+                      className={classes.link}
+                    >
+                      <ListItem button>
+                        <ListItemText secondary={category.node.name} />
+                      </ListItem>
+                    </Link>
+                  ))}
                 <Divider />
               </div>
             </Drawer>
@@ -230,4 +261,4 @@ class Layout extends Component {
   }
 }
 
-export default withStyles(styles)(Layout)
+export default graphql(getAllCategories)(withStyles(styles)(Layout))
