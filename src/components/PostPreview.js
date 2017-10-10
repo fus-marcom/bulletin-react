@@ -2,7 +2,7 @@ import React from 'react'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
 
 const styles = {
@@ -11,46 +11,35 @@ const styles = {
   },
   media: {
     height: 500
+  },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none'
   }
 }
 
-class PostPreview extends React.Component {
-  constructor () {
-    super()
-    this.renderCard = this.renderCard.bind(this)
-    this.transitionToPost = this.transitionToPost.bind(this)
-  }
-  render () {
-    return <div>{this.renderCard()}</div>
-  }
-
-  renderCard () {
-    const classes = this.props.classes
-    const date = new Date(this.props.date).toLocaleDateString()
-    return (
-      <Card className={classes.card}>
-        {this.props.imageURL &&
-          <CardMedia className={classes.media} image={this.props.imageURL} />
-        }
-        <CardContent>
-          <Typography type='headline' component='h2'>
-            {this.props.title}
-          </Typography>
-          <Typography type='subheading' component='h3'>
-            {date}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button dense color='primary' onClick={this.transitionToPost}>
+const PostPreview = ({ classes, title, imageURL, date, id }) => {
+  const postDate = new Date(date).toLocaleDateString()
+  return (
+    <Card className={classes.card}>
+      {imageURL && <CardMedia className={classes.media} image={imageURL} />}
+      <CardContent>
+        <Typography type='headline' component='h2'>
+          {title}
+        </Typography>
+        <Typography type='subheading' component='h3'>
+          {postDate}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Link className={classes.link} to={`/post/${id}`}>
+          <Button dense color='primary'>
             Read More
           </Button>
-        </CardActions>
-      </Card>
-    )
-  }
-  transitionToPost () {
-    this.props.history.push(`/post/${this.props.id}`)
-  }
+        </Link>
+      </CardActions>
+    </Card>
+  )
 }
 
-export default withStyles(styles)(withRouter(PostPreview))
+export default withStyles(styles)(PostPreview)
