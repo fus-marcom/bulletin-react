@@ -21,7 +21,6 @@ import PrintIcon from 'material-ui-icons/Print'
 import ViewQuiltIcon from 'material-ui-icons/ViewQuilt'
 import SearchIcon from 'material-ui-icons/Search'
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -142,11 +141,11 @@ class Layout extends Component {
   }
 
   handleClick = event => {
-    this.setState({ openMenu: true, anchorEl: event.currentTarget });
-  };
+    this.setState({ openMenu: true, anchorEl: event.currentTarget })
+  }
 
   handleRequestClose = () => {
-    this.setState({ openMenu: false });
+    this.setState({ openMenu: false })
   }
   constructor () {
     super()
@@ -162,8 +161,6 @@ class Layout extends Component {
   }
 
   render () {
-
-
     const classes = this.props.classes
     return (
       <MuiThemeProvider theme={theme}>
@@ -195,36 +192,26 @@ class Layout extends Component {
                 >
                   FUS Bulletin
                 </Typography>
-                <IconButton
-                  color='primary'
-                  aria-label='More'
-                >
+                <IconButton color='primary' aria-label='More'>
                   <SearchIcon />
                 </IconButton>
-                <IconButton
-                  color='primary'
-                  aria-label='More'
-                >
+                <IconButton color='primary' aria-label='More'>
                   <ViewQuiltIcon />
                 </IconButton>
-                <IconButton
-                  color='primary'
-                  aria-label='More'
-                >
+                <IconButton color='primary' aria-label='More'>
                   <PrintIcon />
                 </IconButton>
                 <IconButton
                   color='primary'
                   aria-label='More'
                   aria-owns={this.state.openMenu ? 'simple-menu' : null}
-                  aria-haspopup="true"
+                  aria-haspopup='true'
                   onClick={this.handleClick}
-
                 >
                   <MoreVertIcon />
                 </IconButton>
                 <Menu
-                  id="simple-menu"
+                  id='simple-menu'
                   anchorEl={this.state.anchorEl}
                   open={this.state.openMenu}
                   onRequestClose={this.handleRequestClose}
@@ -242,7 +229,10 @@ class Layout extends Component {
             >
               <div className={classes.drawerInner}>
                 <div className={classes.drawerHeader}>
-                  <img className={classes.logo} src="https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg" />
+                  <img
+                    className={classes.logo}
+                    src='https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg'
+                  />
                   {/*
                     <IconButton onClick={this.handleDrawerClose}>
                       <ChevronLeftIcon />
