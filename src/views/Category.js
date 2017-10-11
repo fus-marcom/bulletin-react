@@ -32,21 +32,23 @@ class Category extends Component {
             Steubenville
           </title>
         </Helmet>
-        {posts && posts.edges.map(post => (
-          <PostPreview
-            key={post.node.id}
-            id={post.node.id}
-            date={post.node.date}
-            imageURL={
-              post.node.featuredImage && post.node.featuredImage.sourceUrl
-            }
-            title={post.node.title}
-          />
-        ))}
+        {posts &&
+          posts.edges.map(post => (
+            <PostPreview
+              key={post.node.id}
+              id={post.node.id}
+              date={post.node.date}
+              imageURL={
+                post.node.featuredImage && post.node.featuredImage.sourceUrl
+              }
+              title={post.node.title}
+            />
+          ))}
       </div>
     )
   }
 }
 
 export default graphql(getPostsByCat, {
-  options: ({ match }) => ({ variables: { slug: match.params.slug } })})(Category)
+  options: ({ match }) => ({ variables: { slug: match.params.slug } })
+})(Category)

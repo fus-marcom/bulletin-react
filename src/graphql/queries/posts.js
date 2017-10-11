@@ -11,7 +11,7 @@ export const getAllPosts = gql`
 `
 export const getPostsByCat = gql`
   query getPostsByCat($slug: String!) {
-    posts(where:{categoryName: $slug }) {
+    posts(where: { categoryName: $slug }) {
       edges {
         node {
           id

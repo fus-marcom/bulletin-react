@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint-plugin-import": "^2.7.0",
     "material-ui": "^1.0.0-beta.13",
     "material-ui-icons": "^1.0.0-beta.15",
     "react": "^16.0.0",
