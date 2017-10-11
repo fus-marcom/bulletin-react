@@ -32,23 +32,23 @@ const PostPreview = ({ classes, title, imageURL, date, id }) => {
       {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       <CardContent>
         <Typography
-          type='headline'
+          type="headline"
           className={classes.titleColor}
-          component='h2'
+          component="h2"
         >
           {title}
         </Typography>
         <Typography
           className={classes.dateColor}
-          type='subheading'
-          component='h3'
+          type="subheading"
+          component="h3"
         >
           {postDate}
         </Typography>
       </CardContent>
       <CardActions>
         <Link className={classes.link} to={`/post/${id}`}>
-          <Button dense color='primary'>
+          <Button dense color="primary">
             Read More
           </Button>
         </Link>

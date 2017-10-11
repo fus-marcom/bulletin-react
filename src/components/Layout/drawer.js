@@ -16,7 +16,7 @@ class SideComponent extends Component {
     return (
       <div>
         <Drawer
-          type='persistent'
+          type="persistent"
           classes={{
             paper: classes.drawerPaper
           }}
@@ -27,8 +27,8 @@ class SideComponent extends Component {
               <ListItem>
                 <img
                   className={classes.image}
-                  alt='logo'
-                  src='https://franciscan.university/img/side-nav-logo.jpg'
+                  alt="logo"
+                  src="https://franciscan.university/img/side-nav-logo.jpg"
                 />
               </ListItem>
               <IconButton onClick={this.props.handleDrawerClose}>
@@ -37,18 +37,18 @@ class SideComponent extends Component {
             </div>
             <Divider />
             <ListSubheader>Current Bulletin</ListSubheader>
-            <Link to='/' className={classes.link}>
+            <Link to="/" className={classes.link}>
               <ListItem button>
                 <ListItemIcon>
                   <AlarmClock />
                 </ListItemIcon>
-                <ListItemText inset secondary='Take Action' />
+                <ListItemText inset secondary="Take Action" />
               </ListItem>
             </Link>
             <Divider />
-            <Link to='/categories' className={classes.link}>
+            <Link to="/categories" className={classes.link}>
               <ListItem button>
-                <ListItemText primary='Categories' />
+                <ListItemText primary="Categories" />
               </ListItem>
             </Link>
             {!this.props.data.loading &&

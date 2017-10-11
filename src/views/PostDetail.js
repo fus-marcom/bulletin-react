@@ -30,7 +30,7 @@ class PostDetail extends Component {
         </Helmet>
         <h1>{post.title}</h1>
         <img
-          alt=''
+          alt=""
           style={{ height: '600px', width: '800px' }}
           src={post.featuredImage && post.featuredImage.sourceUrl}
         />

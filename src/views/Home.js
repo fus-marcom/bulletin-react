@@ -19,7 +19,7 @@ class Home extends Component {
         </Helmet>
         {!posts && <Loader />}
         {posts && (
-          <Grid container justify='center'>
+          <Grid container justify="center">
             <Grid item xs={12} sm={8} md={6}>
               <RenderPost posts={posts} />
             </Grid>

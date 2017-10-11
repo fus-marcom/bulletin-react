@@ -15,9 +15,9 @@ class App extends Component {
       <ApolloProvider client={client}>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/:category' component={Category} />
-            <Route path='/post/:post_id' component={PostDetail} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/:category" component={Category} />
+            <Route path="/post/:post_id" component={PostDetail} />
           </Switch>
         </BrowserRouter>
       </ApolloProvider>

@@ -24,8 +24,8 @@ class TopBar extends React.Component {
         >
           <Toolbar disableGutters={!this.props.open}>
             <IconButton
-              color='primary'
-              aria-label='open drawer'
+              color="primary"
+              aria-label="open drawer"
               onClick={this.props.handleDrawerOpen}
               className={classNames(
                 classes.menuButton,
@@ -35,33 +35,33 @@ class TopBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography
-              type='title'
-              color='inherit'
+              type="title"
+              color="inherit"
               className={classes.flex}
               noWrap
             >
               FUS Bulletin
             </Typography>
-            <IconButton color='primary' aria-label='More'>
+            <IconButton color="primary" aria-label="More">
               <SearchIcon />
             </IconButton>
-            <IconButton color='primary' aria-label='More'>
+            <IconButton color="primary" aria-label="More">
               <ViewQuiltIcon />
             </IconButton>
-            <IconButton color='primary' aria-label='More'>
+            <IconButton color="primary" aria-label="More">
               <PrintIcon />
             </IconButton>
             <IconButton
-              color='primary'
-              aria-label='More'
+              color="primary"
+              aria-label="More"
               aria-owns={this.props.openMenu ? 'simple-menu' : null}
-              aria-haspopup='true'
+              aria-haspopup="true"
               onClick={this.props.handleClick}
             >
               <MoreVertIcon />
             </IconButton>
             <Menu
-              id='simple-menu'
+              id="simple-menu"
               anchorEl={this.props.anchorEl}
               open={this.props.openMenu}
               onRequestClose={this.props.handleRequestClose}
