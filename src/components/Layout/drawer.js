@@ -52,10 +52,10 @@ class SideComponent extends Component {
               </ListItem>
             </Link>
             {!this.props.data.loading &&
-              this.props.data.categories.edges.map(category => (
+              this.props.data.categories && this.props.data.categories.edges.map(category => (
                 <Link
                   key={category.node.id}
-                  to={`/category/${category.node.id}`}
+                  to={`/category/${category.node.slug}`}
                   className={classes.link}
                 >
                   <ListItem button>
