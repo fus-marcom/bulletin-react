@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "prettier 'src/**/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && standard --fix",
+    "lint":
+      "prettier 'src/**/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && standard --fix",
     "precommit": "lint-staged"
   },
   "devDependencies": {
@@ -46,8 +47,9 @@
       "URL",
       "renderPost",
       "handleClick",
-      "handleRequestClose"
-
+      "handleRequestClose",
+      "handleDrawerOpen",
+      "handleDrawerClose"
     ],
     "parser": "babel-eslint"
   }

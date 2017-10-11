@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { SinglePostDetail } from '../graphql/queries/posts'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 import { Helmet } from 'react-helmet'
 // import { Link } from 'react-router-dom'

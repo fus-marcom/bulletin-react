@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { getAllPosts } from '../graphql/queries/posts'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 import Grid from 'material-ui/Grid'
 import RenderPost from '../components/renderPostPreview'
