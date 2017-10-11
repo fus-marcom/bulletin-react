@@ -19,9 +19,10 @@ import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import PrintIcon from 'material-ui-icons/Print'
-import DashBoardIcon from 'material-ui-icons/Dashboard'
 import SearchIcon from 'material-ui-icons/Search'
 import AlarmClock from 'material-ui-icons/Alarm'
+import ViewQuiltIcon from 'material-ui-icons/ViewQuilt'
+import Menu, { MenuItem } from 'material-ui/Menu'
 import { getAllCategories } from '../graphql/queries/categories'
 
 const theme = createMuiTheme({
@@ -49,6 +50,10 @@ const theme = createMuiTheme({
 const drawerWidth = 250
 
 const styles = theme => ({
+  logo: {
+    width: '234px',
+    margin: '8px auto'
+  },
   flex: {
     flex: 1
   },
@@ -67,6 +72,9 @@ const styles = theme => ({
     height: '100%'
   },
   appBar: {
+    backgroundColor: '#fff',
+    borderBottom: 'solid 3px #998643',
+    color: '#21412a',
     position: 'fixed',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -135,7 +143,17 @@ const styles = theme => ({
 
 class Layout extends Component {
   state = {
-    open: true
+    open: true,
+    anchorEl: null,
+    openMenu: false
+  }
+
+  handleClick = event => {
+    this.setState({ openMenu: true, anchorEl: event.currentTarget })
+  }
+
+  handleRequestClose = () => {
+    this.setState({ openMenu: false })
   }
   constructor () {
     super()
@@ -164,7 +182,7 @@ class Layout extends Component {
             >
               <Toolbar disableGutters={!this.state.open}>
                 <IconButton
-                  color='contrast'
+                  color='primary'
                   aria-label='open drawer'
                   onClick={this.handleDrawerOpen}
                   className={classNames(
@@ -182,18 +200,32 @@ class Layout extends Component {
                 >
                   FUS Bulletin
                 </Typography>
-                <IconButton color='contrast' aria-label='More'>
+                <IconButton color='primary' aria-label='More'>
                   <SearchIcon />
                 </IconButton>
-                <IconButton color='contrast' aria-label='More'>
-                  <DashBoardIcon />
+                <IconButton color='primary' aria-label='More'>
+                  <ViewQuiltIcon />
                 </IconButton>
-                <IconButton color='contrast' aria-label='More'>
+                <IconButton color='primary' aria-label='More'>
                   <PrintIcon />
                 </IconButton>
-                <IconButton color='contrast' aria-label='More'>
+                <IconButton
+                  color='primary'
+                  aria-label='More'
+                  aria-owns={this.state.openMenu ? 'simple-menu' : null}
+                  aria-haspopup='true'
+                  onClick={this.handleClick}
+                >
                   <MoreVertIcon />
                 </IconButton>
+                <Menu
+                  id='simple-menu'
+                  anchorEl={this.state.anchorEl}
+                  open={this.state.openMenu}
+                  onRequestClose={this.handleRequestClose}
+                >
+                  <MenuItem onClick={this.handleRequestClose}>Logout</MenuItem>
+                </Menu>
               </Toolbar>
             </AppBar>
             <Drawer

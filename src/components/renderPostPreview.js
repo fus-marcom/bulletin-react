@@ -9,7 +9,9 @@ const PostRenderer = ({ posts }) => {
           key={post.node.id}
           id={post.node.id}
           date={post.node.date}
-          imageURL={post.node.featuredImage && post.node.featuredImage.sourceUrl}
+          imageURL={
+            post.node.featuredImage && post.node.featuredImage.sourceUrl
+          }
           title={post.node.title}
         />
       ))}
