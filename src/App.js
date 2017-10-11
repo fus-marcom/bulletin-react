@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
-import './App.css'
+import './styles/App.css'
 import client from './graphql/apolloClient'
 
 // Import Views

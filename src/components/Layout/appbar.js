@@ -11,70 +11,67 @@ import MoreVertIcon from 'material-ui-icons/MoreVert'
 import Menu, { MenuItem } from 'material-ui/Menu'
 import classNames from 'classnames'
 
-class TopBar extends React.Component {
-  render () {
-    const classes = this.props.classes
-    return (
-      <div>
-        <AppBar
-          className={classNames(
-            classes.appBar,
-            this.props.open && classes.appBarShift
-          )}
-        >
-          <Toolbar disableGutters={!this.props.open}>
-            <IconButton
-              color="primary"
-              aria-label="open drawer"
-              onClick={this.props.handleDrawerOpen}
-              className={classNames(
-                classes.menuButton,
-                this.props.open && classes.hide
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              type="title"
-              color="inherit"
-              className={classes.flex}
-              noWrap
-            >
-              FUS Bulletin
-            </Typography>
-            <IconButton color="primary" aria-label="More">
-              <SearchIcon />
-            </IconButton>
-            <IconButton color="primary" aria-label="More">
-              <ViewQuiltIcon />
-            </IconButton>
-            <IconButton color="primary" aria-label="More">
-              <PrintIcon />
-            </IconButton>
-            <IconButton
-              color="primary"
-              aria-label="More"
-              aria-owns={this.props.openMenu ? 'simple-menu' : null}
-              aria-haspopup="true"
-              onClick={this.props.handleClick}
-            >
-              <MoreVertIcon />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={this.props.anchorEl}
-              open={this.props.openMenu}
-              onRequestClose={this.props.handleRequestClose}
-            >
-              <MenuItem onClick={this.props.handleRequestClose}>
-                Logout
-              </MenuItem>
-            </Menu>
-          </Toolbar>
-        </AppBar>
-      </div>
-    )
-  }
+const TopBar = ({
+  classes,
+  open,
+  openMenu,
+  handleDrawerOpen,
+  handleClick,
+  anchorEl,
+  handleRequestClose
+}) => {
+  return (
+    <div>
+      <AppBar
+        className={classNames(classes.appBar, open && classes.appBarShift)}
+      >
+        <Toolbar disableGutters={!open}>
+          <IconButton
+            color="primary"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={classNames(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            type="title"
+            color="inherit"
+            className={classes.flex}
+            noWrap
+          >
+            FUS Bulletin
+          </Typography>
+          <IconButton color="primary" aria-label="More">
+            <SearchIcon />
+          </IconButton>
+          <IconButton color="primary" aria-label="More">
+            <ViewQuiltIcon />
+          </IconButton>
+          <IconButton color="primary" aria-label="More">
+            <PrintIcon />
+          </IconButton>
+          <IconButton
+            color="primary"
+            aria-label="More"
+            aria-owns={openMenu ? 'simple-menu' : null}
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <MoreVertIcon />
+          </IconButton>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            open={openMenu}
+            onRequestClose={handleRequestClose}
+          >
+            <MenuItem onClick={handleRequestClose}>Logout</MenuItem>
+          </Menu>
+        </Toolbar>
+      </AppBar>
+    </div>
+  )
 }
 
 export default TopBar
