@@ -13,6 +13,14 @@ class Layout extends Component {
     openMenu: false
   }
 
+  componentWillMount () {
+    if (window.innerWidth < 770) {
+      this.setState({
+        open: false
+      })
+    }
+  }
+
   handleDrawerOpen = () => {
     this.setState({ open: true })
   }
