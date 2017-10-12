@@ -3,8 +3,9 @@ import { graphql } from 'react-apollo'
 import { getPostsByCat } from '../graphql/queries/posts'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
-import PostPreview from '../components/PostPreview'
+import RenderPost from '../components/renderPostPreview'
 import { Helmet } from 'react-helmet'
+import Grid from 'material-ui/Grid'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
@@ -14,16 +15,15 @@ class Category extends Component {
     this.renderCategories = this.renderCategories.bind(this)
   }
   render () {
-    const isLoading = this.props.data.loading
+    const posts = this.props.data.posts
     return (
       <Layout>
-        {isLoading && <Loader />}
-        {!isLoading && this.renderCategories()}
+        {!posts && <Loader />}
+        {posts && this.renderCategories(posts)}
       </Layout>
     )
   }
-  renderCategories () {
-    const posts = this.props.data.posts
+  renderCategories (posts) {
     return (
       <div>
         <Helmet>
@@ -32,18 +32,11 @@ class Category extends Component {
             Steubenville
           </title>
         </Helmet>
-        {posts &&
-          posts.edges.map(post => (
-            <PostPreview
-              key={post.node.id}
-              id={post.node.id}
-              date={post.node.date}
-              imageURL={
-                post.node.featuredImage && post.node.featuredImage.sourceUrl
-              }
-              title={post.node.title}
-            />
-          ))}
+        <Grid container justify="center">
+          <Grid item xs={12} sm={8} md={6}>
+            <RenderPost posts={posts} />
+          </Grid>
+        </Grid>
       </div>
     )
   }

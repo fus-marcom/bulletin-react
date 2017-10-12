@@ -28,7 +28,7 @@ class SideComponent extends Component {
                 <img
                   className={classes.image}
                   alt="logo"
-                  src="https://franciscan.university/img/side-nav-logo.jpg"
+                  src="https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg"
                 />
               </ListItem>
               <IconButton onClick={this.props.handleDrawerClose}>
