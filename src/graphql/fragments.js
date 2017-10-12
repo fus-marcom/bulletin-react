@@ -7,6 +7,7 @@ export const postFragment = gql`
         id
         title
         date
+        slug
         featuredImage {
           sourceUrl
         }
@@ -21,6 +22,7 @@ export const categoriesFragment = gql`
       node {
         id
         name
+        slug
       }
     }
   }

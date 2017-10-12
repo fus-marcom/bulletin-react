@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { getCategories } from '../graphql/queries/categories'
+import { getPostsByCat } from '../graphql/queries/posts'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
-import CategoryView from '../components/CategoryView'
+import PostPreview from '../components/PostPreview'
 import { Helmet } from 'react-helmet'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
@@ -18,7 +18,7 @@ const Category = ({ data }) => {
   )
 }
 const RenderCategories = ({ data }) => {
-  const categories = data.categories
+  const posts = data.posts
   return (
     <div>
       <Helmet>
@@ -26,16 +26,22 @@ const RenderCategories = ({ data }) => {
           Posts By Categories | Bulletin - Franciscan University of Steubenville
         </title>
       </Helmet>
-      {categories.edges.map(category => (
-        <CategoryView
-          key={category.node.id}
-          id={category.node.id}
-          name={category.node.name}
-          posts={category.node.posts}
-        />
-      ))}
+      {posts &&
+        posts.edges.map(post => (
+          <PostPreview
+            key={post.node.id}
+            id={post.node.id}
+            date={post.node.date}
+            imageURL={
+              post.node.featuredImage && post.node.featuredImage.sourceUrl
+            }
+            title={post.node.title}
+          />
+        ))}
     </div>
   )
 }
 
-export default graphql(getCategories)(Category)
+export default graphql(getPostsByCat, {
+  options: ({ match }) => ({ variables: { slug: match.params.slug } })
+})(Category)
