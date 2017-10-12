@@ -8,17 +8,9 @@ import styles from './styles'
 
 class Layout extends Component {
   state = {
-    open: true,
+    open: false,
     anchorEl: null,
     openMenu: false
-  }
-
-  componentWillMount () {
-    if (window.innerWidth < 770) {
-      this.setState({
-        open: false
-      })
-    }
   }
 
   handleDrawerOpen = () => {
@@ -59,12 +51,7 @@ class Layout extends Component {
             handleDrawerClose={this.handleDrawerClose}
           />
           <div className={classes.appFrame}>
-            <main
-              className={classNames(
-                classes.content,
-                this.state.open && classes.contentShift
-              )}
-            >
+            <main className={classNames(classes.content, this.state.open)}>
               {this.props.children}
             </main>
           </div>

@@ -16,28 +16,20 @@ class TopBar extends React.Component {
     const classes = this.props.classes
     return (
       <div>
-        <AppBar
-          className={classNames(
-            classes.appBar,
-            this.props.open && classes.appBarShift
-          )}
-        >
+        <AppBar className={classNames(classes.appBar, this.props.open)}>
           <Toolbar disableGutters={!this.props.open}>
             <IconButton
               color="primary"
               aria-label="open drawer"
               onClick={this.props.handleDrawerOpen}
-              className={classNames(
-                classes.menuButton,
-                this.props.open && classes.hide
-              )}
+              className={classNames(classes.menuButton, classes.navIconHide)}
             >
               <MenuIcon />
             </IconButton>
             <Typography
               type="title"
               color="inherit"
-              className={classes.flex}
+              className={classNames(classes.flex, classes.typo)}
               noWrap
             >
               FUS Bulletin
