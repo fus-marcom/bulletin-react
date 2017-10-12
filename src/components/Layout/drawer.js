@@ -52,7 +52,7 @@ const SideComponent = ({ classes, open, handleDrawerClose, data }) => {
             </ListItem>
           </Link>
           {!data.loading &&
-            data.categories.edges.map(category => (
+            data.categories && data.categories.edges.map(category => (
               <Link
                 key={category.node.id}
                 to={`/category/${category.node.id}`}
