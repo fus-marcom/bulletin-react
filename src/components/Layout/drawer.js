@@ -46,16 +46,16 @@ const SideComponent = ({ classes, open, handleDrawerClose, data }) => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to="/categories" className={classes.link}>
+          
             <ListItem button>
               <ListItemText primary="Categories" />
             </ListItem>
-          </Link>
+
           {!data.loading &&
             data.categories && data.categories.edges.map(category => (
               <Link
                 key={category.node.id}
-                to={`/category/${category.node.id}`}
+                to={`/category/${category.node.slug}`}
                 className={classes.link}
               >
                 <ListItem button>
