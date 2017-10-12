@@ -22,13 +22,15 @@ const SideComponent = ({ classes, open, handleDrawerClose, data }) => {
       >
         <div className={classes.drawerInner}>
           <div className={classes.drawerHeader}>
-            <ListItem>
-              <img
-                className={classes.image}
-                alt="logo"
-                src="https://franciscan.university/img/side-nav-logo.jpg"
-              />
-            </ListItem>
+            <Link to="/">
+              <ListItem>
+                <img
+                  className={classes.image}
+                  alt="logo"
+                  src="https://franciscan.university/img/side-nav-logo.jpg"
+                />
+              </ListItem>
+            </Link>
             <IconButton onClick={handleDrawerClose}>
               <ChevronLeftIcon />
             </IconButton>
