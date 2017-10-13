@@ -1,45 +1,50 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { graphql } from 'react-apollo'
 import { getPostsByCat } from '../graphql/queries/posts'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
-import RenderPost from '../components/renderPostPreview'
+import PostPreview from '../components/PostPreview'
 import { Helmet } from 'react-helmet'
 import Grid from 'material-ui/Grid'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
-class Category extends Component {
-  constructor () {
-    super()
-    this.renderCategories = this.renderCategories.bind(this)
-  }
-  render () {
-    const posts = this.props.data.posts
-    return (
-      <Layout>
-        {!posts && <Loader />}
-        {posts && this.renderCategories(posts)}
-      </Layout>
-    )
-  }
-  renderCategories (posts) {
-    return (
-      <div>
-        <Helmet>
-          <title>
-            Posts By Categories | Bulletin - Franciscan University of
-            Steubenville
-          </title>
-        </Helmet>
-        <Grid container justify="center">
-          <Grid item xs={12} sm={8} md={6}>
-            <RenderPost posts={posts} />
-          </Grid>
-        </Grid>
-      </div>
-    )
-  }
+const Category = ({ data }) => {
+  const isLoading = data.loading
+  return (
+    <Layout>
+      {isLoading && <Loader />}
+      {!isLoading && <RenderCategories data={data} />}
+    </Layout>
+  )
+}
+const RenderCategories = ({ data }) => {
+  const posts = data.posts
+  return (
+    <div>
+      <Helmet>
+        <title>
+          Posts By Categories | Bulletin - Franciscan University of Steubenville
+        </title>
+      </Helmet>
+      <Grid container spacing={24}>
+        {posts &&
+          posts.edges.map(post => (
+            <Grid key={post.node.id} item xs={12} sm={6} md={4}>
+              <PostPreview
+                key={post.node.id}
+                id={post.node.id}
+                date={post.node.date}
+                imageURL={
+                  post.node.featuredImage && post.node.featuredImage.sourceUrl
+                }
+                title={post.node.title}
+              />
+            </Grid>
+          ))}
+      </Grid>
+    </div>
+  )
 }
 
 export default graphql(getPostsByCat, {
