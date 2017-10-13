@@ -27,14 +27,12 @@ const RenderCategories = ({ data }) => {
           Posts By Categories | Bulletin - Franciscan University of Steubenville
         </title>
       </Helmet>
-      <Grid
-        container
-        spacing={24}>
+      <Grid container spacing={24}>
         {posts &&
           posts.edges.map(post => (
             <Grid key={post.node.id} item xs={12} sm={6} md={4} lg={3}>
               <PostPreview
-                style={{maxWidth: '500px', margin: '0 auto'}}
+                style={{ maxWidth: '500px', margin: '0 auto' }}
                 key={post.node.id}
                 id={post.node.id}
                 date={post.node.date}
