@@ -33,7 +33,6 @@ class Layout extends Component {
 
   render () {
     const classes = this.props.classes
-
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
@@ -53,7 +52,7 @@ class Layout extends Component {
           />
           <div className={classes.appFrame}>
             <main className={classNames(classes.content, this.state.open)}>
-              {React.cloneElement({ ...this.props }.children, { Test: 'test' })}
+              {this.props.children}
             </main>
           </div>
         </div>
