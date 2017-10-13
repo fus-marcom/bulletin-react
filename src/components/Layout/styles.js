@@ -62,7 +62,6 @@ const styles = theme => ({
     ...theme.mixins.toolbar
   },
   content: {
-    backgroundColor: theme.palette.background.default,
     width: '100%',
     padding: theme.spacing.unit * 3,
     marginTop: 56,
