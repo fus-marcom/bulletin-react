@@ -22,12 +22,12 @@ const TopBar = ({
 }) => {
   return (
     <div>
-      <AppBar className={classNames(classes.appBar, this.props.open)}>
-        <Toolbar disableGutters={!this.props.open}>
+      <AppBar className={classNames(classes.appBar, open)}>
+        <Toolbar disableGutters={!open}>
           <IconButton
             color="primary"
             aria-label="open drawer"
-            onClick={this.props.handleDrawerOpen}
+            onClick={handleDrawerOpen}
             className={classNames(classes.menuButton, classes.navIconHide)}
           >
             <MenuIcon />
@@ -52,19 +52,19 @@ const TopBar = ({
           <IconButton
             color="primary"
             aria-label="More"
-            aria-owns={this.props.openMenu ? 'simple-menu' : null}
+            aria-owns={openMenu ? 'simple-menu' : null}
             aria-haspopup="true"
-            onClick={this.props.handleClick}
+            onClick={handleClick}
           >
             <MoreVertIcon />
           </IconButton>
           <Menu
             id="simple-menu"
-            anchorEl={this.props.anchorEl}
-            open={this.props.openMenu}
-            onRequestClose={this.props.handleRequestClose}
+            anchorEl={anchorEl}
+            open={openMenu}
+            onRequestClose={handleRequestClose}
           >
-            <MenuItem onClick={this.props.handleRequestClose}>Logout</MenuItem>
+            <MenuItem onClick={handleRequestClose}>Logout</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
