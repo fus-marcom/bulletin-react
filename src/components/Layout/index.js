@@ -52,11 +52,12 @@ class Layout extends Component {
           />
           <div className={classes.appFrame}>
             <main className={classNames(classes.content, this.state.open)}>
-              {this.props.children.map((child, i) => {
-                if (child) {
-                  return React.cloneElement(child, { foo: 'bar', key: i })
-                }
-              })}
+              {// eslint-disable-next-line
+              this.props.children.map((child, i) => {
+                  if (child) {
+                    return React.cloneElement(child, { foo: 'bar', key: i })
+                  }
+                })}
             </main>
           </div>
         </div>
