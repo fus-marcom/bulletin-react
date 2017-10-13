@@ -5,6 +5,7 @@ import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
 import PostPreview from '../components/PostPreview'
 import { Helmet } from 'react-helmet'
+import Grid from 'material-ui/Grid'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
@@ -26,18 +27,22 @@ const RenderCategories = ({ data }) => {
           Posts By Categories | Bulletin - Franciscan University of Steubenville
         </title>
       </Helmet>
-      {posts &&
-        posts.edges.map(post => (
-          <PostPreview
-            key={post.node.id}
-            id={post.node.id}
-            date={post.node.date}
-            imageURL={
-              post.node.featuredImage && post.node.featuredImage.sourceUrl
-            }
-            title={post.node.title}
-          />
-        ))}
+      <Grid container spacing={24}>
+        {posts &&
+          posts.edges.map(post => (
+            <Grid key={post.node.id} item xs={12} sm={6} md={4}>
+              <PostPreview
+                key={post.node.id}
+                id={post.node.id}
+                date={post.node.date}
+                imageURL={
+                  post.node.featuredImage && post.node.featuredImage.sourceUrl
+                }
+                title={post.node.title}
+              />
+            </Grid>
+          ))}
+      </Grid>
     </div>
   )
 }

@@ -27,31 +27,32 @@ const styles = theme => ({
     borderBottom: 'solid 3px #998643',
     color: '#21412a',
     position: 'fixed',
+    [theme.breakpoints.up('md')]: {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`
+    },
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
     })
   },
   menuButton: {
     marginLeft: 12,
     marginRight: 20
   },
+  typo: {
+    marginLeft: 6
+  },
   hide: {
     display: 'none'
   },
   drawerPaper: {
-    left: 0,
-    position: 'fixed',
-    height: '100%',
-    width: drawerWidth
+    width: 250,
+    [theme.breakpoints.up('md')]: {
+      width: drawerWidth,
+      position: 'fixed',
+      height: '100%'
+    }
   },
   drawerHeader: {
     display: 'flex',
@@ -62,28 +63,17 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
-    marginLeft: 0,
-    flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    height: 'calc(100% - 56px)',
     marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      content: {
-        height: 'calc(100% - 64px)',
-        marginTop: 64
-      }
+    [theme.breakpoints.up('md')]: {
+      marginTop: 64,
+      marginLeft: drawerWidth
     }
   },
-  contentShift: {
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
+  navIconHide: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none'
+    }
   },
   image: {
     height: '100%',

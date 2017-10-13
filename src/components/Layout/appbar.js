@@ -22,22 +22,20 @@ const TopBar = ({
 }) => {
   return (
     <div>
-      <AppBar
-        className={classNames(classes.appBar, open && classes.appBarShift)}
-      >
+      <AppBar className={classNames(classes.appBar, open)}>
         <Toolbar disableGutters={!open}>
           <IconButton
             color="primary"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            className={classNames(classes.menuButton, open && classes.hide)}
+            className={classNames(classes.menuButton, classes.navIconHide)}
           >
             <MenuIcon />
           </IconButton>
           <Typography
             type="title"
             color="inherit"
-            className={classes.flex}
+            className={classNames(classes.flex, classes.typo)}
             noWrap
           >
             FUS Bulletin
