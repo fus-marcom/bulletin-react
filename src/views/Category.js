@@ -6,14 +6,14 @@ import Layout from '../components/Layout/index'
 import PostPreview from '../components/PostPreview'
 import { Helmet } from 'react-helmet'
 import Grid from 'material-ui/Grid'
-// import { Link } from 'react-router-dom'
-// import '../styles/app.css'
+import Error from '../components/Error'
 
 const Category = ({ data }) => {
   const isLoading = data.loading
   return (
     <Layout>
-      {isLoading && <Loader />}
+      {!data.error && isLoading && <Loader />}
+      {data.error && <Error error={data.error.message} />}
       {!isLoading && <RenderCategories data={data} />}
     </Layout>
   )
