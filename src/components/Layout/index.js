@@ -10,9 +10,15 @@ class Layout extends Component {
   state = {
     open: false,
     anchorEl: null,
-    openMenu: false
+    openMenu: false,
+    viewType: 'list'
   }
-
+  componentWillMount () {
+    const layoutType = window.localStorage.getItem('l-type') || 'list'
+    this.setState({
+      viewType: layoutType
+    })
+  }
   handleDrawerOpen = () => {
     this.setState({ open: true })
   }
@@ -20,6 +26,14 @@ class Layout extends Component {
     this.setState({
       openMenu: true,
       anchorEl: event ? event.currentTarget : null
+    })
+  }
+
+  handleLayoutChange = () => {
+    const newVal = this.state.viewType === 'grid' ? 'list' : 'grid'
+    window.localStorage.setItem('l-type', newVal)
+    this.setState({
+      viewType: newVal
     })
   }
 
@@ -44,6 +58,7 @@ class Layout extends Component {
             handleDrawerOpen={this.handleDrawerOpen}
             handleClick={this.handleClick}
             handleRequestClose={this.handleRequestClose}
+            handleLayoutChange={this.handleLayoutChange}
           />
           <SideBar
             open={this.state.open}
@@ -55,7 +70,10 @@ class Layout extends Component {
               {// eslint-disable-next-line
               this.props.children.map((child, i) => {
                   if (child) {
-                    return React.cloneElement(child, { foo: 'bar', key: i })
+                    return React.cloneElement(child, {
+                      viewtype: this.state.viewType,
+                      key: i
+                    })
                   }
                 })}
             </main>

@@ -18,7 +18,8 @@ const TopBar = ({
   handleDrawerOpen,
   handleClick,
   anchorEl,
-  handleRequestClose
+  handleRequestClose,
+  handleLayoutChange
 }) => {
   return (
     <div>
@@ -43,7 +44,11 @@ const TopBar = ({
           <IconButton color="primary" aria-label="More">
             <SearchIcon />
           </IconButton>
-          <IconButton color="primary" aria-label="More">
+          <IconButton
+            onClick={handleLayoutChange}
+            color="primary"
+            aria-label="More"
+          >
             <ViewQuiltIcon />
           </IconButton>
           <IconButton color="primary" aria-label="More">
