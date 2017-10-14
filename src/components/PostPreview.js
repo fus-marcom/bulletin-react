@@ -17,7 +17,7 @@ const styles = {
     color: grey[500]
   },
   media: {
-    height: 500
+    height: 250
   },
   link: {
     color: 'inherit',

@@ -1,12 +1,12 @@
 import React from 'react'
-import RenderPosts from '../components/renderPostPreview'
+import GridRenderer from '../components/GridTypes/GridRenderer'
 
 const CategoryView = ({ id, name, posts }) => {
   return (
     <div>
       <h1>Posts in {name} Category</h1>
       <br />
-      <RenderPosts posts={posts} />
+      <GridRenderer posts={posts} />
       <br />
       <hr />
       <br />
