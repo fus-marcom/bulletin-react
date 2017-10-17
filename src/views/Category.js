@@ -5,8 +5,6 @@ import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
 import { Helmet } from 'react-helmet'
 import GridRenderer from '../components/GridTypes/GridRenderer'
-// import { Link } from 'react-router-dom'
-// import '../styles/app.css'
 
 const Category = ({ data }) => {
   const isLoading = data.loading
