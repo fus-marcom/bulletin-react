@@ -8,17 +8,17 @@ import { Helmet } from 'react-helmet'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import Error from '../components/Error'
 
-const Category = ({ data }) => {
+const Category = ({ data, viewtype }) => {
   const isLoading = data.loading
   return (
     <Layout>
       {!data.error && isLoading && <Loader />}
       {data.error && <Error error={data.error.message} />}
-      {!isLoading && <RenderCategories data={data} />}
+      {!isLoading && <RenderCategories data={data} viewtype={viewtype} />}
     </Layout>
   )
 }
-const RenderCategories = ({ data, isLoading }) => {
+const RenderCategories = ({ data, viewtype }) => {
   const posts = data.posts
   return (
     <div>
@@ -27,8 +27,7 @@ const RenderCategories = ({ data, isLoading }) => {
           Posts By Categories | Bulletin - Franciscan University of Steubenville
         </title>
       </Helmet>
-      {isLoading && <Loader />}
-      {!isLoading && <GridRenderer posts={posts} />}
+      <GridRenderer posts={posts} viewtype={viewtype} />
     </div>
   )
 }
