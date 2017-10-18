@@ -43,7 +43,11 @@ class SideComponent extends Component {
           </ListItem>
         </Link>
         <Divider />
-        <ListSubheader>Categories</ListSubheader>
+        <Link to={`/`} className={classes.link}>
+          <ListItem button>
+            <ListItemText secondary="All" />
+          </ListItem>
+        </Link>
         {!this.props.data.loading &&
           this.props.data.categories &&
           this.props.data.categories.edges.map(category => (
