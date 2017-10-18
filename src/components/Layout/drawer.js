@@ -43,7 +43,7 @@ class SideComponent extends Component {
           </ListItem>
         </Link>
         <Divider />
-        <ListSubheader>Categories</ListSubheader>
+        <ListSubheader>All</ListSubheader>
         {!this.props.data.loading &&
           this.props.data.categories &&
           this.props.data.categories.edges.map(category => (
@@ -57,10 +57,6 @@ class SideComponent extends Component {
               </ListItem>
             </Link>
           ))}
-        <Divider />
-        <ListItem button>
-          <ListItemText inset primary="All Categories" />
-        </ListItem>
         <Divider />
         <ListItem button>
           <ListItemIcon>
