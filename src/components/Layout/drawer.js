@@ -19,11 +19,13 @@ class SideComponent extends Component {
       <div className={classes.drawerInner}>
         <div className={classes.drawerHeader}>
           <ListItem>
-            <img
-              className={classes.image}
-              alt="logo"
-              src="https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg"
-            />
+            <Link to="/">
+              <img
+                className={classes.image}
+                alt="logo"
+                src="https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg"
+              />
+            </Link>
           </ListItem>
           <IconButton
             className={classes.navIconHide}
@@ -33,7 +35,11 @@ class SideComponent extends Component {
           </IconButton>
         </div>
         <Divider />
-        <ListSubheader>Current Bulletin</ListSubheader>
+        <Link to="/" className={classes.link}>
+          <ListItem button>
+            <ListItemText secondary="Current Bulletin" />
+          </ListItem>
+        </Link>
         <Link to="/" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
