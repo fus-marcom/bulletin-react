@@ -9,7 +9,7 @@ import Hidden from 'material-ui/Hidden'
 import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import AlarmClock from 'material-ui-icons/Alarm'
-import ClockIcon from 'material-ui-icons/Timer'
+import ClockIcon from 'material-ui-icons/AccessTime'
 import { graphql } from 'react-apollo'
 
 class SideComponent extends Component {
