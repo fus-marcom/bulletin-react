@@ -12,6 +12,32 @@ import AlarmClock from 'material-ui-icons/Alarm'
 import ClockIcon from 'material-ui-icons/AccessTime'
 import { graphql } from 'react-apollo'
 
+const displayCategories = props => {
+  const { data, classes } = props
+  if (data.loading) return
+
+  return (
+    <div>
+      <Link to={`/category/`} className={classes.link}>
+        <ListItem button>
+          <ListItemText secondary={`All`} />
+        </ListItem>
+      </Link>
+      {data.categories.edges.map(category => (
+        <Link
+          key={category.node.id}
+          to={`/category/${category.node.slug}`}
+          className={classes.link}
+        >
+          <ListItem button>
+            <ListItemText secondary={category.node.name} />
+          </ListItem>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
 class SideComponent extends Component {
   render () {
     const classes = this.props.classes
@@ -44,19 +70,7 @@ class SideComponent extends Component {
         </Link>
         <Divider />
         <ListSubheader>Categories</ListSubheader>
-        {!this.props.data.loading &&
-          this.props.data.categories &&
-          this.props.data.categories.edges.map(category => (
-            <Link
-              key={category.node.id}
-              to={`/category/${category.node.slug}`}
-              className={classes.link}
-            >
-              <ListItem button>
-                <ListItemText secondary={category.node.name} />
-              </ListItem>
-            </Link>
-          ))}
+        {displayCategories(this.props)}
         <Divider />
         <ListItem button>
           <ListItemIcon>
