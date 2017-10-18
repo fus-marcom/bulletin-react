@@ -41,7 +41,7 @@ const styles = theme => ({
     marginRight: 20
   },
   typo: {
-    marginLeft: 6
+    marginLeft: 15
   },
   hide: {
     display: 'none'
@@ -78,6 +78,9 @@ const styles = theme => ({
   image: {
     height: '100%',
     width: '100%'
+  },
+  btn: {
+    cursor: 'pointer'
   }
 })
 

@@ -36,12 +36,12 @@ const TopBar = ({
             <MenuIcon />
           </IconButton>
           <Typography
-            type="title"
+            type="display1"
             color="inherit"
             className={classNames(classes.flex, classes.typo)}
             noWrap
           >
-            FUS Bulletin
+            Bulletin
           </Typography>
           <IconButton color="primary" aria-label="More">
             <SearchIcon />

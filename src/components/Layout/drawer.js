@@ -65,7 +65,12 @@ class SideComponent extends Component {
           <ListItemText inset primary="Filter By Date" />
         </ListItem>
         <Divider />
-        <ListSubheader>Submit Announcement</ListSubheader>
+        <ListSubheader
+          className={classes.btn}
+          onClick={this.props.toggleDrawer}
+        >
+          Submit Announcement
+        </ListSubheader>
         <ListSubheader>Classic Mode</ListSubheader>
         <ListSubheader>Help</ListSubheader>
       </div>
