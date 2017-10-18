@@ -59,6 +59,10 @@ class SideComponent extends Component {
           ))}
         <Divider />
         <ListItem button>
+          <ListItemText inset primary="All Categories" />
+        </ListItem>
+        <Divider />
+        <ListItem button>
           <ListItemIcon>
             <ClockIcon />
           </ListItemIcon>
