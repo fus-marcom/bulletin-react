@@ -58,11 +58,19 @@ app.use(
 )
 
 // Making WP API Available by using remote gql server strategy
-introspectSchema(fetcher).then(schema => {
-  const gqlschema = makeRemoteExecutableSchema({
-    schema,
-    fetcher
+introspectSchema(fetcher)
+  .then(schema => {
+    const gqlschema = makeRemoteExecutableSchema({
+      schema,
+      fetcher
+    })
+    app.use(
+      '/graphql',
+      bodyParser.json(),
+      graphqlExpress({ schema: gqlschema })
+    )
+    app.listen(PORT, () => console.log(`Server Started on PORT -> ${PORT}`))
   })
-  app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: gqlschema }))
-  app.listen(PORT, () => console.log(`Server Started on PORT -> ${PORT}`))
-})
+  .catch(err => {
+    console.log(`Connection Error -> ${err}`)
+  })
