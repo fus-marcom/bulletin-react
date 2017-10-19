@@ -16,6 +16,9 @@ const styles = {
   dateColor: {
     color: grey[500]
   },
+  categoryColor: {
+    color: '#ffb41f'
+  },
   media: {
     height: 250
   },
@@ -25,12 +28,22 @@ const styles = {
   }
 }
 
-const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
+const PostPreview = ({
+  classes,
+  title,
+  imageURL,
+  date,
+  id,
+  style,
+  category
+}) => {
   const postDate = new Date(date).toLocaleDateString()
   return (
     <Card className={classes.card} style={style}>
-      {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       <CardContent>
+        <Typography type="caption" className={classes.categoryColor}>
+          {category}
+        </Typography>
         <Typography
           type="headline"
           className={classes.titleColor}
@@ -45,6 +58,7 @@ const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
         >
           {postDate}
         </Typography>
+        {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       </CardContent>
       <CardActions>
         <Link className={classes.link} to={`/post/${id}`}>

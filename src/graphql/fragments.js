@@ -8,6 +8,14 @@ export const postFragment = gql`
         title
         date
         slug
+        categories {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
         featuredImage {
           sourceUrl
         }
