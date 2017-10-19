@@ -16,6 +16,7 @@
     "react-apollo": "^1.4.16",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
+    "react-masonry-component": "^6.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "typeface-roboto": "^0.0.35"
@@ -24,14 +25,12 @@
     "start-front": "react-scripts start",
     "start-back-dev": "nodemon --watch server/*.js ./server/app.js",
     "start-back": "node ./server/app.js",
-    "start":
-      "concurrently 'npm run start-front' 'npm run start-back-dev'",
+    "start": "concurrently 'npm run start-front' 'npm run start-back-dev'",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "test-without-watch": "cross-env CI=true npm test",
-    "lint":
-      "prettier 'src/**/*.js' 'server/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && eslint --fix 'src/**/*.js' 'server/*.js' 'src/components/**/*.js'",
+    "lint": "prettier 'src/**/*.js' 'server/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && eslint --fix 'src/**/*.js' 'server/*.js' 'src/components/**/*.js'",
     "precommit": "lint-staged && npm run test-without-watch"
   },
   "devDependencies": {

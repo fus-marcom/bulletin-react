@@ -9,7 +9,7 @@ import GridRenderer from '../components/GridTypes/GridRenderer'
 import Error from '../components/Error'
 
 const Category = ({ data, viewtype }) => {
-  const isLoading = data.loading
+  const isLoading = !data.posts
   return (
     <Layout>
       {!data.error && isLoading && <Loader />}
