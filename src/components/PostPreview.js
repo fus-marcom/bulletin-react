@@ -55,7 +55,7 @@ const PostPreview = ({
       <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
       <CardContent>
         <Typography type="caption" className={classes.categoryColor}>
-          {category}
+          {category.toUpperCase()}
         </Typography>
         <Typography
           type="headline"
