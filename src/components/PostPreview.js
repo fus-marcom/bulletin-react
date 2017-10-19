@@ -25,11 +25,21 @@ const styles = {
   }
 }
 
+const CardImage = ({ mediaStyle, imageURL, id }) => {
+  if (!imageURL) return ''
+
+  return (
+    <Link to={`/post/${id}`}>
+      <CardMedia className={mediaStyle} image={imageURL} />
+    </Link>
+  )
+}
+
 const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
   const postDate = new Date(date).toLocaleDateString()
   return (
     <Card className={classes.card} style={style}>
-      {imageURL && <CardMedia className={classes.media} image={imageURL} />}
+      <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
       <CardContent>
         <Typography
           type="headline"
