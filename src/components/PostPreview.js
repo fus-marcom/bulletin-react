@@ -2,11 +2,12 @@ import React from 'react'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
-import AttachmentIcon from 'material-ui-icons/Attachment'
 import { Link } from 'react-router-dom'
 import Divider from 'material-ui/Divider'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
+
+import Attachements from './Attachments'
 
 const styles = {
   card: {
@@ -47,7 +48,8 @@ const PostPreview = ({
   date,
   id,
   style,
-  category
+  category,
+  content
 }) => {
   const postDate = new Date(date).toLocaleDateString()
   return (
@@ -73,14 +75,23 @@ const PostPreview = ({
         >
           {postDate}
         </Typography>
+        <Typography
+          type="body2"
+          gutterBottom
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+        {/*
+        TODO:
+         - Add logic to test if there are attachments  
+        */}
+        <Attachements
+        // pass the attachments as props here
+        />
       </CardContent>
       <Divider />
       <CardActions>
         <Button href={`/post/${id}`} dense color="primary">
           Read More
-        </Button>
-        <Button dense color="primary">
-          <AttachmentIcon /> Attachment
         </Button>
       </CardActions>
     </Card>
