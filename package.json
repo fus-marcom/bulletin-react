@@ -1,69 +1,4 @@
 {
-<<<<<<< HEAD
-	"name": "bulletin-react",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"apollo-server-express": "^1.1.6",
-		"body-parser": "^1.18.2",
-		"cors": "^2.8.4",
-		"eslint-plugin-import": "^2.7.0",
-		"express": "^4.16.2",
-		"graphql": "^0.11.7",
-		"graphql-tools": "^2.5.0",
-		"material-ui": "^1.0.0-beta.13",
-		"material-ui-icons": "^1.0.0-beta.15",
-		"react": "^16.0.0",
-		"react-apollo": "^1.4.16",
-		"react-dom": "^16.0.0",
-		"react-helmet": "^5.2.0",
-		"react-router-dom": "^4.2.2",
-		"react-scripts": "1.0.14",
-		"typeface-roboto": "^0.0.35"
-	},
-	"scripts": {
-		"start-front": "react-scripts start",
-		"start-back-dev": "nodemon --watch server/*.js ./server/app.js",
-		"start-back": "node ./server/app.js",
-		"start": "concurrently \"npm run start-front\" \"npm run start-back-dev\"",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject",
-		"test-without-watch": "cross-env CI=true npm test",
-		"lint":
-			"prettier 'src/**/*.js' 'server/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && eslint --fix 'src/**/*.js' 'server/*.js' 'src/components/**/*.js'",
-		"precommit": "lint-staged && npm run test-without-watch"
-	},
-	"devDependencies": {
-		"babel-eslint": "^8.0.1",
-		"concurrently": "^3.5.0",
-		"cross-env": "^5.0.1",
-		"enzyme": "^3.1.0",
-		"enzyme-adapter-react-16": "^1.0.1",
-		"eslint": "^4.8.0",
-		"eslint-config-standard": "^10.2.1",
-		"eslint-plugin-node": "^5.2.0",
-		"eslint-plugin-promise": "^3.5.0",
-		"eslint-plugin-react": "^7.4.0",
-		"eslint-plugin-standard": "^3.0.1",
-		"husky": "^0.14.3",
-		"jest-enzyme": "^4.0.1",
-		"lint-staged": "^4.0.2",
-		"node-fetch": "^1.7.1",
-		"nodemon": "^1.12.1",
-		"npm-run-all": "^4.0.2",
-		"prettier": "^1.5.3",
-		"react-test-renderer": "^16.0.0",
-		"standard": "^10.0.2"
-	},
-	"lint-staged": {
-		"*.js": [
-			"prettier --write --single-quote --no-semi",
-			"eslint --fix",
-			"git add"
-		]
-	}
-=======
   "name": "bulletin-react",
   "version": "0.1.0",
   "private": true,
@@ -94,8 +29,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "test-without-watch": "cross-env CI=true npm test",
-    "lint":
-      "prettier 'src/**/*.js' 'server/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && eslint --fix 'src/**/*.js' 'server/*.js' 'src/components/**/*.js'",
+    "lint": "prettier 'src/**/*.js' 'server/*.js' 'src/components/**/*.js' '*.js' --write --config .prettierrc && eslint --fix 'src/**/*.js' 'server/*.js' 'src/components/**/*.js'",
     "precommit": "lint-staged && npm run test-without-watch"
   },
   "devDependencies": {
@@ -127,5 +61,4 @@
       "git add"
     ]
   }
->>>>>>> e7c170d6410896edc41d215b75d8d65f28f02c5d
 }
