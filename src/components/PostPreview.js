@@ -2,7 +2,8 @@ import React from 'react'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
-import { Link } from 'react-router-dom'
+import AttachmentIcon from 'material-ui-icons/Attachment'
+import Divider from 'material-ui/Divider'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
 
@@ -60,12 +61,14 @@ const PostPreview = ({
         </Typography>
         {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       </CardContent>
+      <Divider />
       <CardActions>
-        <Link className={classes.link} to={`/post/${id}`}>
-          <Button dense color="primary">
-            Read More
-          </Button>
-        </Link>
+        <Button href={`/post/${id}`} dense color="primary">
+          Read More
+        </Button>
+        <Button dense color="primary">
+          <AttachmentIcon /> Attachment
+        </Button>
       </CardActions>
     </Card>
   )
