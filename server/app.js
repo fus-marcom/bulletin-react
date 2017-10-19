@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `${__dirname}/.env`
+})
 const express = require('express')
 const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
@@ -7,6 +10,12 @@ const {
 } = require('graphql-tools')
 const fetch = require('node-fetch')
 const cors = require('cors') // Cors origin policy
+const mail = require('./email')
+const multer = require('multer')
+
+const multerOptions = {
+  storage: multer.memoryStorage()
+}
 
 const fetcher = async ({ query, variables, operationName, context }) => {
   const fetchResult = await fetch(
@@ -55,6 +64,24 @@ app.use(
   graphiqlExpress({
     endpointURL: '/graphql'
   })
+)
+
+app.post(
+  '/email_announcement',
+  multer(multerOptions).any('upload'),
+  async (req, res) => {
+    try {
+      const info = await mail(
+        'someone@gmail.com', // Get it from login session
+        req.body.title,
+        req.body.announcement,
+        req.files
+      )
+      res.json({ ok: true, ...info })
+    } catch (error) {
+      res.json({ ok: false, ...error })
+    }
+  }
 )
 
 // Making WP API Available by using remote gql server strategy
