@@ -4,7 +4,7 @@ import { SinglePostDetail } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 import { Helmet } from 'react-helmet'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
 const PostDetail = ({ data }) => {
@@ -28,7 +28,9 @@ const RenderPost = ({ data }) => {
       <Helmet>
         <title>{post.title} - Franciscan University of Steubenville</title>
       </Helmet>
-      <h1>{post.title}</h1>
+      <Link to={`/post/${post.id}`}>
+        <h1>{post.title}</h1>
+      </Link>
       <img
         alt=""
         style={{ height: '600px', width: '800px' }}

@@ -36,7 +36,9 @@ const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
           className={classes.titleColor}
           component="h2"
         >
-          {title}
+          <Link className={classes.link} to={`/post/${id}`}>
+            {title}
+          </Link>
         </Typography>
         <Typography
           className={classes.dateColor}
