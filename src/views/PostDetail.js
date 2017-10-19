@@ -4,7 +4,7 @@ import { SinglePostDetail } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 import { Helmet } from 'react-helmet'
-// import { Link } from 'react-router-dom'
+import Typography from 'material-ui/Typography'
 // import '../styles/app.css'
 
 const PostDetail = ({ data }) => {
@@ -28,15 +28,23 @@ const RenderPost = ({ data }) => {
       <Helmet>
         <title>{post.title} - Franciscan University of Steubenville</title>
       </Helmet>
-      <h1>{post.title}</h1>
+
+      <Typography type="subheading" component="h4">
+        {date}
+      </Typography>
+      <Typography type="display2" component="h2">
+        {post.title}
+      </Typography>
+      <Typography type="subheading" component="h4">
+        {date}
+      </Typography>
+
       <img
         alt=""
         style={{ height: '600px', width: '800px' }}
         src={post.featuredImage && post.featuredImage.sourceUrl}
       />
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
-      <h4>Author: {post.author.name}</h4>
-      <h5>Date: {date}</h5>
     </div>
   )
 }

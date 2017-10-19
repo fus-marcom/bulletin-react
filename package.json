@@ -24,7 +24,7 @@
     "start-front": "react-scripts start",
     "start-back-dev": "nodemon --watch server/*.js ./server/app.js",
     "start-back": "node ./server/app.js",
-    "start": "concurrently 'npm run start-front' 'npm run start-back-dev'",
+    "start": "concurrently \"npm run start-front\" \"npm run start-back-dev\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
