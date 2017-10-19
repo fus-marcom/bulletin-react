@@ -25,8 +25,13 @@ export const SinglePostDetail = gql`
       title
       date
       content
-      author {
-        name
+      categories {
+        edges {
+          node {
+            id
+            name
+          }
+        }
       }
       featuredImage {
         sourceUrl
