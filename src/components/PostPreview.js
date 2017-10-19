@@ -3,8 +3,11 @@ import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import { Link } from 'react-router-dom'
+import Divider from 'material-ui/Divider'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
+
+import Attachements from './Attachments'
 
 const styles = {
   card: {
@@ -15,6 +18,9 @@ const styles = {
   },
   dateColor: {
     color: grey[500]
+  },
+  categoryColor: {
+    color: '#ffb41f'
   },
   media: {
     height: 250
@@ -35,12 +41,24 @@ const CardImage = ({ mediaStyle, imageURL, id }) => {
   )
 }
 
-const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
+const PostPreview = ({
+  classes,
+  title,
+  imageURL,
+  date,
+  id,
+  style,
+  category,
+  content
+}) => {
   const postDate = new Date(date).toLocaleDateString()
   return (
     <Card className={classes.card} style={style}>
       <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
       <CardContent>
+        <Typography type="caption" className={classes.categoryColor}>
+          {category.toUpperCase()}
+        </Typography>
         <Typography
           type="headline"
           className={classes.titleColor}
@@ -57,13 +75,24 @@ const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
         >
           {postDate}
         </Typography>
+        <Typography
+          type="body2"
+          gutterBottom
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+        {/*
+        TODO:
+         - Add logic to test if there are attachments  
+        */}
+        <Attachements
+        // pass the attachments as props here
+        />
       </CardContent>
+      <Divider />
       <CardActions>
-        <Link className={classes.link} to={`/post/${id}`}>
-          <Button dense color="primary">
-            Read More
-          </Button>
-        </Link>
+        <Button href={`/post/${id}`} dense color="primary">
+          Read More
+        </Button>
       </CardActions>
     </Card>
   )
