@@ -41,6 +41,7 @@ const PostPreview = ({
   const postDate = new Date(date).toLocaleDateString()
   return (
     <Card className={classes.card} style={style}>
+      {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       <CardContent>
         <Typography type="caption" className={classes.categoryColor}>
           {category}
@@ -59,7 +60,6 @@ const PostPreview = ({
         >
           {postDate}
         </Typography>
-        {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       </CardContent>
       <Divider />
       <CardActions>
