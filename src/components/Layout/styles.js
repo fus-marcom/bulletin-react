@@ -81,6 +81,12 @@ const styles = theme => ({
   },
   btn: {
     cursor: 'pointer'
+  },
+  absolute: {
+    flip: false,
+    position: 'fixed',
+    bottom: 40,
+    right: 40
   }
 })
 

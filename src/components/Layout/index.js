@@ -4,6 +4,9 @@ import classNames from 'classnames'
 import theme from './fusTheme'
 import TopBar from './appbar'
 import SideBar from './drawer'
+import Tooltip from 'material-ui/Tooltip'
+import Button from 'material-ui/Button'
+import AddIcon from 'material-ui-icons/Add'
 import styles from './styles'
 import AnnouncementForm from './AnnoucementForm'
 
@@ -88,6 +91,16 @@ class Layout extends Component {
                     })
                   }
                 })}
+              <Tooltip placement="left" title="Add announcement">
+                <Button
+                  onClick={this.toggleDrawer}
+                  color="primary"
+                  className={classes.absolute}
+                  fab
+                >
+                  <AddIcon />
+                </Button>
+              </Tooltip>
             </main>
           </div>
         </div>
