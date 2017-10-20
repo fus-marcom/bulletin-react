@@ -23,17 +23,18 @@ const displayCategories = props => {
           <ListItemText secondary={`All`} />
         </ListItem>
       </Link>
-      {data.categories.edges.map(category => (
-        <Link
-          key={category.node.id}
-          to={`/category/${category.node.slug}`}
-          className={classes.link}
-        >
-          <ListItem button>
-            <ListItemText secondary={category.node.name} />
-          </ListItem>
-        </Link>
-      ))}
+      {data.categories &&
+        data.categories.edges.map(category => (
+          <Link
+            key={category.node.id}
+            to={`/category/${category.node.slug}`}
+            className={classes.link}
+          >
+            <ListItem button>
+              <ListItemText secondary={category.node.name} />
+            </ListItem>
+          </Link>
+        ))}
     </div>
   )
 }
