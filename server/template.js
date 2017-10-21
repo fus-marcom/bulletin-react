@@ -1,4 +1,4 @@
-module.exports = (title, body) => {
+module.exports = (Pagetitle, title, body) => {
   return `
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -1416,7 +1416,7 @@ table.button.google table td {
 
               <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;width: 100%;position: relative;display: table;"><tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
                 <th class="small-12 large-12 columns first last" style="color: #0a0a0a;font-family: Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0 auto;text-align: left;line-height: 1.3;font-size: 16px;padding-left: 16px !important;padding-bottom: 16px;width: 100% !important;padding-right: 16px !important;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block !important;height: auto !important;"><table style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;width: 100%;"><tr style="padding: 0;vertical-align: top;text-align: left;"><th style="color: #0a0a0a;font-family: Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;font-size: 16px;">
-                  <h1 class="text-center" style="color: inherit;font-family: Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: center;line-height: 1.3;word-wrap: normal;margin-bottom: 10px;font-size: 34px;">Submission Request</h1>
+                  <h1 class="text-center" style="color: inherit;font-family: Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: center;line-height: 1.3;word-wrap: normal;margin-bottom: 10px;font-size: 34px;">${Pagetitle}</h1>
                   <center data-parsed="" style="width: 100%;min-width: 0 !important;">
                     <img src="https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg" align="center" class="float-center" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;clear: both;display: block;margin: 0 auto;float: none;text-align: center;">
                   </center>

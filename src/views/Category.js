@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import { getPostsByCat, getAllPosts } from '../graphql/queries/posts'
 import Loader from '../components/Loader'
 import Layout from '../components/Layout/index'
+import withAuth from '../components/withAuth'
 import { Helmet } from 'react-helmet'
 
 import GridRenderer from '../components/GridTypes/GridRenderer'
@@ -38,6 +39,6 @@ const RenderCategories = ({ data, viewtype }) => {
 
 export default graphql(getPostsByCat, {
   options: ({ match }) => ({ variables: { slug: match.params.slug } })
-})(Category)
+})(withAuth(Category))
 
 export const allPosts = graphql(getAllPosts)(AllPosts)

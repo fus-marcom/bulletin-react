@@ -12,7 +12,7 @@ const transport = nodemailer.createTransport({
 })
 
 module.exports = (from, title, body, attachments) => {
-  let html = template(title, body)
+  let html = template('Submission Request', title, body)
   let text = htmlToText.fromString(html)
   const f =
     attachments.length > 0
@@ -31,3 +31,5 @@ module.exports = (from, title, body, attachments) => {
   }
   return transport.sendMail(mailOptions)
 }
+
+module.exports.transport = transport

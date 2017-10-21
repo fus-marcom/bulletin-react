@@ -22,6 +22,7 @@ const TopBar = ({
   anchorEl,
   handleRequestClose,
   handleLayoutChange,
+  handleLogout,
   viewtype
 }) => {
   return (
@@ -81,7 +82,7 @@ const TopBar = ({
             open={openMenu}
             onRequestClose={handleRequestClose}
           >
-            <MenuItem onClick={handleRequestClose}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

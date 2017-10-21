@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
+import withAuth from '../components/withAuth'
 import { SinglePostDetail } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
@@ -82,5 +83,5 @@ const RenderPost = ({ data, classes }) => {
 export default withStyles(styles)(
   graphql(SinglePostDetail, {
     options: ({ match }) => ({ variables: { id: match.params.post_id } })
-  })(PostDetail)
+  })(withAuth(PostDetail))
 )

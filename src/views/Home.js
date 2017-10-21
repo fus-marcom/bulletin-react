@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import Error from '../components/Error'
 import { Helmet } from 'react-helmet'
+import withAuth from '../components/withAuth'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
@@ -23,4 +24,4 @@ const Home = ({ data, viewtype }) => {
   )
 }
 
-export default graphql(getAllPosts)(Home)
+export default graphql(getAllPosts)(withAuth(Home))

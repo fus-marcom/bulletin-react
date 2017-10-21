@@ -12,6 +12,9 @@ const fetch = require('node-fetch')
 const cors = require('cors') // Cors origin policy
 const mail = require('./email')
 const multer = require('multer')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const passwordless = require('passwordless')
 
 const multerOptions = {
   storage: multer.memoryStorage()
@@ -37,12 +40,6 @@ const fetcher = async ({ query, variables, operationName, context }) => {
 const PORT = process.env.PORT || 8080
 
 const app = express()
-
-/*
-FOR AUTHENTICATION I WILL GO FOR THIS APPROACHs
-app.use('*', ssoAuthenticationMiddleware)
-*/
-
 const whitelist = [
   // Allow domains here
   // Remember to add your react site at last
@@ -57,6 +54,24 @@ const corsOptions = {
   credentials: true
 }
 app.use(cors(corsOptions))
+app.use(bodyParser.json())
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    cookie: {
+      maxAge: 100 * 60 * 60 * 24 * 30 * 12 // 1 year
+    },
+    saveUninitialized: false,
+    store: new MongoStore({ url: process.env.DB_HOST })
+  })
+)
+
+require('./auth')(app)
+/*
+FOR AUTHENTICATION I WILL GO FOR THIS APPROACHs
+app.use('*', ssoAuthenticationMiddleware)
+*/
 
 // Graphiql GUI for API Testing...
 app.use(
@@ -93,6 +108,7 @@ introspectSchema(fetcher)
     })
     app.use(
       '/graphql',
+      passwordless.restricted(),
       bodyParser.json(),
       graphqlExpress({ schema: gqlschema })
     )
