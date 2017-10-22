@@ -73,52 +73,54 @@ class PostPreview extends React.Component {
     const { classes, title, imageURL, date, id, style, category } = this.props
     const postDate = new Date(date).toLocaleDateString()
     return (
-      <Card className={classes.card} style={style}>
-        <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
-        <CardContent>
-          <Typography type="caption" className={classes.categoryColor}>
-            {category.toUpperCase()}
-          </Typography>
-          <Typography
-            type="headline"
-            className={classes.titleColor}
-            component="h2"
-          >
-            <Link className={classes.link} to={`/post/${id}`}>
-              {title}
-            </Link>
-          </Typography>
-          <Typography
-            className={classes.dateColor}
-            type="subheading"
-            component="h3"
-          >
-            {postDate}
-          </Typography>
-          <Typography type="body2" gutterBottom>
-            {this.state.content}
-            {this.state.cRead && (
-              <Link className={classes.continue} to={`/post/${id}`}>
-                {' '}
-                ...Continue Reading
+      <div>
+        <Card className={classes.card} style={style}>
+          <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
+          <CardContent>
+            <Typography type="caption" className={classes.categoryColor}>
+              {category.toUpperCase()}
+            </Typography>
+            <Typography
+              type="headline"
+              className={classes.titleColor}
+              component="h2"
+            >
+              <Link className={classes.link} to={`/post/${id}`}>
+                {title}
               </Link>
-            )}
-          </Typography>
-          {/*
+            </Typography>
+            <Typography
+              className={classes.dateColor}
+              type="subheading"
+              component="h3"
+            >
+              {postDate}
+            </Typography>
+            <Typography type="body2" gutterBottom>
+              {this.state.content}
+              {this.state.cRead && (
+                <Link className={classes.continue} to={`/post/${id}`}>
+                  {' '}
+                  ...Continue Reading
+                </Link>
+              )}
+            </Typography>
+            {/*
         TODO:
          - Add logic to test if there are attachments
         */}
-          <Attachments
-          // pass the attachments as props here
-          />
-        </CardContent>
-        <Divider />
-        <CardActions>
-          <Button href={`/post/${id}`} dense color="primary">
-            Read More
-          </Button>
-        </CardActions>
-      </Card>
+            <Attachments
+            // pass the attachments as props here
+            />
+          </CardContent>
+          <Divider />
+          <CardActions>
+            <Button href={`/post/${id}`} dense color="primary">
+              Read More
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 }
