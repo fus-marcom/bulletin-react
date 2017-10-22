@@ -1,6 +1,7 @@
 import React from 'react'
 import Grid from 'material-ui/Grid'
 import PostPreview from '../PostPreview'
+// import Masonry from 'react-masonry-infinite'
 
 const GridView = ({ posts }) => (
   <Grid container>
