@@ -13,7 +13,7 @@ const styles = theme => ({
   },
   root: {
     width: '100%',
-    height: '100%',
+    height: 430,
     zIndex: 1
   },
   appFrame: {
