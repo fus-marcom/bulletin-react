@@ -1,4 +1,35 @@
 body {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0 !important;
+}
+body::-webkit-scrollbar {
+	width: 7px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.207);
+	border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(221, 221, 221, 0.261);
+	border-radius: 20px;
+}
+
+body::-webkit-scrollbar:horizontal {
+	width: 7px;
+}
+
+body::-webkit-scrollbar-thumb:horizontal {
+	background: rgba(0, 0, 0, 0.207);
+	border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track:horizontal {
+	background: rgba(221, 221, 221, 0.261);
+	border-radius: 20px;
+}
+
+header {
+	padding-right: 0 !important;
 }
