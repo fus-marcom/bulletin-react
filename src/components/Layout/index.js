@@ -43,6 +43,12 @@ class Layout extends Component {
     })
   }
 
+  handlePrintIcon = () => {
+    this.setState({
+      viewType: 'print'
+    })
+  }
+
   handleRequestClose = () => {
     this.setState({ openMenu: false })
   }
@@ -76,19 +82,25 @@ class Layout extends Component {
             handleRequestClose={this.handleRequestClose}
             handleLayoutChange={this.handleLayoutChange}
             handleLogout={this.handleLogout}
+            handlePrintIcon={this.handlePrintIcon}
+            style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
           <SideBar
             open={this.state.open}
             classes={this.props.classes}
             handleDrawerClose={this.handleDrawerClose}
             toggleDrawer={this.toggleDrawer}
+            style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
           <AnnouncementForm
             btnDrawerOpen={this.state.btnDrawerOpen}
             toggleDrawer={this.toggleDrawer}
           />
           <div className={classes.appFrame}>
-            <main className={classNames(classes.content, this.state.open)}>
+            <main
+              style={this.state.viewType === 'print' ? { margin: '15px' } : {}}
+              className={classNames(classes.content, this.state.open)}
+            >
               {// eslint-disable-next-line
               this.props.children.map((child, i) => {
                   if (child) {
@@ -100,6 +112,9 @@ class Layout extends Component {
                 })}
               <Tooltip placement="left" title="Add announcement">
                 <Button
+                  style={
+                    this.state.viewType === 'print' ? { display: 'none' } : {}
+                  }
                   onClick={this.toggleDrawer}
                   color="primary"
                   className={classes.absolute}

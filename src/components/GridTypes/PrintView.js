@@ -4,19 +4,14 @@ import PostPreview from '../PostPreview'
 
 const ListView = ({ posts }) => (
   <Grid container justify="center">
-    <Grid item xs={12} sm={8} md={6}>
+    <Grid item xs={12}>
+      <h1>Today{"'"}s Bulletin</h1>
       {posts &&
         posts.edges.map(post => (
           <PostPreview
-            view="card"
+            view="print"
             key={post.node.id}
-            id={post.node.id}
-            date={post.node.date}
-            imageURL={
-              post.node.featuredImage && post.node.featuredImage.sourceUrl
-            }
             title={post.node.title}
-            category={post.node.categories.edges[0].node.name}
             content={post.node.content}
           />
         ))}

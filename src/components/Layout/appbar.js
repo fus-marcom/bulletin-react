@@ -23,10 +23,12 @@ const TopBar = ({
   handleRequestClose,
   handleLayoutChange,
   handleLogout,
-  viewtype
+  handlePrintIcon,
+  viewtype,
+  style
 }) => {
   return (
-    <div>
+    <div style={style}>
       <AppBar className={classNames(classes.appBar, open)}>
         <Toolbar disableGutters={!open}>
           <IconButton
@@ -64,7 +66,7 @@ const TopBar = ({
           </Tooltip>
           <Tooltip title="Print View">
             <IconButton color="primary" aria-label="More">
-              <PrintIcon />
+              <PrintIcon onClick={handlePrintIcon} />
             </IconButton>
           </Tooltip>
           <IconButton

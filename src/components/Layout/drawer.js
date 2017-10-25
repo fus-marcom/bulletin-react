@@ -98,7 +98,7 @@ class SideComponent extends Component {
       </div>
     )
     return (
-      <div>
+      <div style={this.props.style}>
         <Hidden mdUp>
           <Drawer
             type="temporary"
