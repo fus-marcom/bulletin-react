@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from 'material-ui/Grid'
 import PostPreview from '../PostPreview'
 
-const ListView = ({ posts }) => (
+const PrintView = ({ posts }) => (
   <Grid container justify="center">
     <Grid item xs={12}>
       <h1>Today{"'"}s Bulletin</h1>
@@ -19,4 +19,4 @@ const ListView = ({ posts }) => (
   </Grid>
 )
 
-export default ListView
+export default PrintView
