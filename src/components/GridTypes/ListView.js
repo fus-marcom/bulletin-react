@@ -9,8 +9,8 @@ const ListView = ({ posts }) => (
         posts.edges.map(post => (
           <PostPreview
             view="card"
-            key={post.node.id}
-            id={post.node.id}
+            key={post.node.slug}
+            slug={post.node.slug}
             date={post.node.date}
             imageURL={
               post.node.featuredImage && post.node.featuredImage.sourceUrl

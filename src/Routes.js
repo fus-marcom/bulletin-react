@@ -15,7 +15,7 @@ const Routes = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/category/" component={allPosts} />
         <Route exact path="/category/:slug" component={Category} />
-        <Route path="/post/:post_id" component={PostDetail} />
+        <Route exact path="/post/:slug" component={PostDetail} />
       </Switch>
     </BrowserRouter>
   )

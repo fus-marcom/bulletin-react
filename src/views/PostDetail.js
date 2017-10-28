@@ -46,7 +46,7 @@ const PostDetail = ({ data, classes }) => {
 }
 
 const RenderPost = ({ data, classes }) => {
-  const post = data.post
+  const post = data.postBy
   const date = new Date(post.date).toLocaleDateString()
   return (
     <div>
@@ -82,6 +82,6 @@ const RenderPost = ({ data, classes }) => {
 
 export default withStyles(styles)(
   graphql(SinglePostDetail, {
-    options: ({ match }) => ({ variables: { id: match.params.post_id } })
+    options: ({ match }) => ({ variables: { slug: match.params.slug } })
   })(withAuth(PostDetail))
 )
