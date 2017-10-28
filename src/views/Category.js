@@ -14,17 +14,38 @@ const AllPosts = ({ data, viewtype }) => RenderLayout(data, viewtype)
 
 const RenderLayout = (data, viewtype) => {
   const isLoading = !data.posts
+  console.log('Error', data.posts)
   return (
     <Layout>
       {!data.error && isLoading && <Loader />}
       {data.error && <Error error={data.error.message} />}
-      {!isLoading && <RenderCategories data={data} viewtype={viewtype} />}
+      {!isLoading && data.posts.edges.length === 0 && <CategoryError />}
+      {!isLoading &&
+        data.posts.edges.length > 0 && (
+          <RenderCategories data={data} viewtype={viewtype} />
+        )}
     </Layout>
+  )
+}
+
+const CategoryError = () => {
+  console.log('ran')
+  return (
+    <div>
+      <Helmet>
+        <title>
+          Category Doesn{"'"}t Exist | Bulletin - Franciscan University of
+          Steubenville
+        </title>
+      </Helmet>
+      <div>The category you are searching for does not exist</div>
+    </div>
   )
 }
 
 const RenderCategories = ({ data, viewtype }) => {
   const posts = data.posts
+  console.log(data.posts.edges)
   return (
     <div>
       <Helmet>
