@@ -48,7 +48,7 @@ const TopBar = ({
             Bulletin
           </Typography>
           <Tooltip title="Search" placement="bottom">
-            <IconButton color="primary" aria-label="More">
+            <IconButton color="primary" aria-label="Search">
               <SearchIcon />
             </IconButton>
           </Tooltip>
@@ -59,13 +59,13 @@ const TopBar = ({
             <IconButton
               onClick={handleLayoutChange}
               color="primary"
-              aria-label="More"
+              aria-label="View Type"
             >
               {viewtype === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
             </IconButton>
           </Tooltip>
           <Tooltip title="Print View">
-            <IconButton color="primary" aria-label="More">
+            <IconButton color="primary" aria-label="Print View">
               <PrintIcon onClick={handlePrintIcon} />
             </IconButton>
           </Tooltip>
