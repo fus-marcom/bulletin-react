@@ -33,15 +33,37 @@ const styles = {
 }
 
 const PostDetail = ({ data, classes }) => {
-  const isLoading = data.loading
   return (
     <Layout>
+      {data.error && <PostError />}
+      {!data.error && <ShowPost data={data} classes={classes} />}
+    </Layout>
+  )
+}
+
+const ShowPost = ({ data, classes }) => {
+  const isLoading = data.loading
+  return (
+    <div>
       <Helmet>
         <title>Loading... - Franciscan University of Steubenville</title>
       </Helmet>
       {isLoading && <Loader />}
       {!isLoading && <RenderPost data={data} classes={classes} />}
-    </Layout>
+    </div>
+  )
+}
+
+const PostError = () => {
+  return (
+    <div>
+      <Helmet>
+        <title>
+          Post Does Not Exist- Franciscan University of Steubenville
+        </title>
+      </Helmet>
+      <div>The post you are trying to search does not exist.</div>
+    </div>
   )
 }
 
