@@ -14,7 +14,6 @@ const AllPosts = ({ data, viewtype }) => RenderLayout(data, viewtype)
 
 const RenderLayout = (data, viewtype) => {
   const isLoading = !data.posts
-  console.log('Error', data.posts)
   return (
     <Layout>
       {!data.error && isLoading && <Loader />}
