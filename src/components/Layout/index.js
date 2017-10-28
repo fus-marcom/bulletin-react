@@ -96,6 +96,13 @@ class Layout extends Component {
             btnDrawerOpen={this.state.btnDrawerOpen}
             toggleDrawer={this.toggleDrawer}
           />
+          <button
+            className="no-print"
+            onClick={this.handleLayoutChange}
+            style={this.state.viewType === 'print' ? {} : { display: 'none' }}
+          >
+            Return to normal view
+          </button>
           <div className={classes.appFrame}>
             <main
               style={this.state.viewType === 'print' ? { margin: '15px' } : {}}

@@ -6,3 +6,10 @@ body {
 header {
   padding-right: 0 !important;
 }
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
