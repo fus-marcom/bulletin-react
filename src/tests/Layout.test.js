@@ -6,8 +6,10 @@ import client from '../graphql/apolloClient'
 
 describe('<Layout />', () => {
   it('renders without crashing', () => {
-    ;<ApolloProvider client={client}>
-      shallow(<Layout />)
-    </ApolloProvider>
+    shallow(
+      <ApolloProvider client={client}>
+        <Layout />
+      </ApolloProvider>
+    )
   })
 })
