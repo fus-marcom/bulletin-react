@@ -7,7 +7,6 @@ const withAuth = Comp => {
       auth: true
     }
     componentWillReceiveProps (newProps) {
-      console.log(newProps)
       const { data } = newProps
       if (
         data &&

@@ -86,7 +86,6 @@ class Login extends Component {
     })
       .then(res => res.status)
       .then(res => {
-        console.log(res)
         if (res === 200) {
           this.setState({
             txt: 'Email has been sent'

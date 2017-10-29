@@ -39,3 +39,12 @@ export const SinglePostDetail = gql`
     }
   }
 `
+
+export const PostSearchQuery = gql`
+  query PostSearchQuery($search: String!) {
+    posts(where: { search: $search }) {
+      ...PostData
+    }
+  }
+  ${postFragment}
+`

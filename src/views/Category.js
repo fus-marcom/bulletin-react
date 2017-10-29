@@ -9,8 +9,10 @@ import { Helmet } from 'react-helmet'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import Error from '../components/Error'
 
-const Category = ({ data, viewtype }) => RenderLayout(data, viewtype)
-const AllPosts = ({ data, viewtype }) => RenderLayout(data, viewtype)
+const Category = ({ data, viewtype, searchposts }) =>
+  RenderLayout(data, searchposts, viewtype)
+const AllPosts = ({ data, viewtype, searchposts }) =>
+  RenderLayout(data, searchposts, viewtype)
 
 const RenderLayout = (data, viewtype) => {
   const isLoading = !data.posts
@@ -23,8 +25,8 @@ const RenderLayout = (data, viewtype) => {
   )
 }
 
-const RenderCategories = ({ data, viewtype }) => {
-  const posts = data.posts
+const RenderCategories = ({ data, searchposts, viewtype }) => {
+  const posts = searchposts || data.posts
   return (
     <div>
       <Helmet>
