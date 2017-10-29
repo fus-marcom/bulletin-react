@@ -80,8 +80,12 @@ const TopBar = ({
             </IconButton>
           </Tooltip>
           <Tooltip title="Print View">
-            <IconButton color="primary" aria-label="More">
-              <PrintIcon onClick={handlePrintIcon} />
+            <IconButton
+              onClick={handlePrintIcon}
+              color="primary"
+              aria-label="More"
+            >
+              <PrintIcon />
             </IconButton>
           </Tooltip>
           <IconButton
