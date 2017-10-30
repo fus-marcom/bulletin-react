@@ -62,7 +62,7 @@ const TopBar = ({
             <IconButton
               onClick={handleSearchToggle}
               color="primary"
-              aria-label="More"
+              aria-label="Search"
             >
               <SearchIcon />
             </IconButton>
@@ -74,18 +74,14 @@ const TopBar = ({
             <IconButton
               onClick={handleLayoutChange}
               color="primary"
-              aria-label="More"
+              aria-label="View Type"
             >
               {viewtype === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
             </IconButton>
           </Tooltip>
           <Tooltip title="Print View">
-            <IconButton
-              onClick={handlePrintIcon}
-              color="primary"
-              aria-label="More"
-            >
-              <PrintIcon />
+            <IconButton color="primary" aria-label="Print View">
+              <PrintIcon onClick={handlePrintIcon} />
             </IconButton>
           </Tooltip>
           <IconButton

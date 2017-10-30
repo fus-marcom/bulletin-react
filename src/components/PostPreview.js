@@ -37,11 +37,11 @@ const styles = {
   }
 }
 
-const CardImage = ({ mediaStyle, imageURL, id }) => {
+const CardImage = ({ mediaStyle, imageURL, slug }) => {
   if (!imageURL) return ''
 
   return (
-    <Link to={`/post/${id}`}>
+    <Link to={`/post/${slug}`}>
       <CardMedia className={mediaStyle} image={imageURL} />
     </Link>
   )
@@ -76,7 +76,7 @@ class PostPreview extends React.Component {
       title,
       imageURL,
       date,
-      id,
+      slug,
       style,
       category,
       view
@@ -90,7 +90,7 @@ class PostPreview extends React.Component {
             title={title}
             imageURL={imageURL}
             postDate={postDate}
-            id={id}
+            slug={slug}
             style={style}
             category={category}
             cRead={this.state.cRead}
@@ -109,7 +109,7 @@ const CardView = ({
   title,
   imageURL,
   postDate,
-  id,
+  slug,
   style,
   category,
   content,
@@ -117,7 +117,7 @@ const CardView = ({
 }) => (
   <div>
     <Card className={classes.card} style={style}>
-      <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
+      <CardImage mediaStyle={classes.media} imageURL={imageURL} slug={slug} />
       <CardContent>
         <Typography type="caption" className={classes.categoryColor}>
           {category.toUpperCase()}
@@ -127,7 +127,7 @@ const CardView = ({
           className={classes.titleColor}
           component="h2"
         >
-          <Link className={classes.link} to={`/post/${id}`}>
+          <Link className={classes.link} to={`/post/${slug}`}>
             {title}
           </Link>
         </Typography>
@@ -141,7 +141,7 @@ const CardView = ({
         <Typography type="body2" gutterBottom>
           {content}
           {cRead && (
-            <Link className={classes.continue} to={`/post/${id}`}>
+            <Link className={classes.continue} to={`/post/${slug}`}>
               {' '}
               ...Continue Reading
             </Link>
@@ -157,7 +157,7 @@ const CardView = ({
       </CardContent>
       <Divider />
       <CardActions>
-        <Button href={`/post/${id}`} dense color="primary">
+        <Button href={`/post/${slug}`} dense color="primary">
           Read More
         </Button>
       </CardActions>
@@ -165,7 +165,7 @@ const CardView = ({
   </div>
 )
 
-const PlainView = ({ classes, title, id, content }) => (
+const PlainView = ({ classes, title, slug, content }) => (
   <div style={{ fontFamily: 'serif !important' }}>
     <h1>
       <u>{title}</u>

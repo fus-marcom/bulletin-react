@@ -6,6 +6,7 @@ import Category, { allPosts } from './views/Category'
 import Home from './views/Home'
 import PostDetail from './views/PostDetail'
 import Login from './views/Login'
+import NotFound from './views/NotFound'
 
 const Routes = () => {
   return (
@@ -15,7 +16,8 @@ const Routes = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/category/" component={allPosts} />
         <Route exact path="/category/:slug" component={Category} />
-        <Route path="/post/:post_id" component={PostDetail} />
+        <Route exact path="/post/:slug" component={PostDetail} />
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   )

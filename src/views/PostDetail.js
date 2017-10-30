@@ -33,20 +33,42 @@ const styles = {
 }
 
 const PostDetail = ({ data, classes }) => {
-  const isLoading = data.loading
   return (
     <Layout>
+      {data.error && <PostError />}
+      {!data.error && <ShowPost data={data} classes={classes} />}
+    </Layout>
+  )
+}
+
+const ShowPost = ({ data, classes }) => {
+  const isLoading = data.loading
+  return (
+    <div>
       <Helmet>
         <title>Loading... - Franciscan University of Steubenville</title>
       </Helmet>
       {isLoading && <Loader />}
       {!isLoading && <RenderPost data={data} classes={classes} />}
-    </Layout>
+    </div>
+  )
+}
+
+const PostError = () => {
+  return (
+    <div>
+      <Helmet>
+        <title>
+          Post Does Not Exist- Franciscan University of Steubenville
+        </title>
+      </Helmet>
+      <div>The post you are trying to search does not exist.</div>
+    </div>
   )
 }
 
 const RenderPost = ({ data, classes }) => {
-  const post = data.post
+  const post = data.postBy
   const date = new Date(post.date).toLocaleDateString()
   return (
     <div>
@@ -82,6 +104,6 @@ const RenderPost = ({ data, classes }) => {
 
 export default withStyles(styles)(
   graphql(SinglePostDetail, {
-    options: ({ match }) => ({ variables: { id: match.params.post_id } })
+    options: ({ match }) => ({ variables: { slug: match.params.slug } })
   })(withAuth(PostDetail))
 )

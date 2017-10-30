@@ -19,9 +19,10 @@ export const getPostsByCat = gql`
 `
 
 export const SinglePostDetail = gql`
-  query SinglePostDetail($id: ID!) {
-    post(id: $id) {
+  query SinglePostDetail($slug: String!) {
+    postBy(slug: $slug) {
       id
+      slug
       title
       date
       content

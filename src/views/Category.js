@@ -20,8 +20,26 @@ const RenderLayout = (data, viewtype) => {
     <Layout>
       {!data.error && isLoading && <Loader />}
       {data.error && <Error error={data.error.message} />}
-      {!isLoading && <RenderCategories data={data} viewtype={viewtype} />}
+      {!isLoading && data.posts.edges.length === 0 && <CategoryError />}
+      {!isLoading &&
+        data.posts.edges.length > 0 && (
+          <RenderCategories data={data} viewtype={viewtype} />
+        )}
     </Layout>
+  )
+}
+
+const CategoryError = () => {
+  return (
+    <div>
+      <Helmet>
+        <title>
+          Category Doesn{"'"}t Exist | Bulletin - Franciscan University of
+          Steubenville
+        </title>
+      </Helmet>
+      <div>The category you are searching for does not exist</div>
+    </div>
   )
 }
 

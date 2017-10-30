@@ -8,14 +8,14 @@ const GridView = ({ posts }) => (
     <div className="container-fluid">
       <Masonry>
         {posts.edges.map(post => (
-          <div className="col s12 m12 l6 xl4" key={post.node.id}>
+          <div className="col s12 m12 l6 xl4" key={post.node.slug}>
             <PostPreview
               view="card"
               date={post.node.date}
               imageURL={
                 post.node.featuredImage && post.node.featuredImage.sourceUrl
               }
-              id={post.node.id}
+              slug={post.node.slug}
               title={post.node.title}
               category={post.node.categories.edges[0].node.name}
               content={post.node.content}
