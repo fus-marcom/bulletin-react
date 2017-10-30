@@ -28,7 +28,6 @@ const RenderLayout = (data, viewtype) => {
 }
 
 const CategoryError = () => {
-  console.log('ran')
   return (
     <div>
       <Helmet>
