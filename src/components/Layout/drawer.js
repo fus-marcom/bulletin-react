@@ -87,14 +87,15 @@ class SideComponent extends Component {
           <ListItemText inset primary="Filter By Date" />
         </ListItem>
         <Divider />
-        <ListSubheader
-          className={classes.btn}
-          onClick={this.props.toggleDrawer}
-        >
-          Submit Announcement
-        </ListSubheader>
-        <ListSubheader>Classic Mode</ListSubheader>
-        <ListSubheader>Help</ListSubheader>
+        <ListItem button onClick={this.props.toggleDrawer}>
+          <ListItemText secondary={'Submit Announcement'} />
+        </ListItem>
+        <ListItem button>
+          <ListItemText secondary={'Classic Mode'} />
+        </ListItem>
+        <ListItem button>
+          <ListItemText secondary={'Help'} />
+        </ListItem>
       </div>
     )
     return (
