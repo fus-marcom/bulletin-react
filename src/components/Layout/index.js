@@ -6,7 +6,9 @@ import TopBar from './appbar'
 import SideBar from './drawer'
 import Tooltip from 'material-ui/Tooltip'
 import Button from 'material-ui/Button'
+import IconButton from 'material-ui/IconButton'
 import AddIcon from 'material-ui-icons/Add'
+import CloseIcon from 'material-ui-icons/Close'
 import styles from './styles'
 import debounce from 'lodash.debounce'
 import { withApollo } from 'react-apollo'
@@ -127,13 +129,13 @@ class Layout extends Component {
             btnDrawerOpen={this.state.btnDrawerOpen}
             toggleDrawer={this.toggleDrawer}
           />
-          <button
-            className="no-print"
-            onClick={this.handleLayoutChange}
-            style={this.state.viewType === 'print' ? {} : { display: 'none' }}
-          >
-            Return to normal view
-          </button>
+          <IconButton className={classes.closeButton}>
+            <CloseIcon
+              className="no-print"
+              onClick={this.handleLayoutChange}
+              style={this.state.viewType === 'print' ? {} : { display: 'none' }}
+            />
+          </IconButton>
           <div className={classes.appFrame}>
             <main
               style={this.state.viewType === 'print' ? { margin: '15px' } : {}}

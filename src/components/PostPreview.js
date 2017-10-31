@@ -7,6 +7,7 @@ import Divider from 'material-ui/Divider'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
 import AttachmentIcon from 'material-ui-icons/Attachment'
+import IconButton from 'material-ui/IconButton'
 
 import Attachments from './Attachments'
 
@@ -34,6 +35,10 @@ const styles = {
     textDecoration: 'none',
     color: blue[800],
     fontSize: '16px'
+  },
+  printVAtt: {
+    width: 'auto',
+    fontSize: '18px'
   }
 }
 
@@ -97,7 +102,11 @@ class PostPreview extends React.Component {
             content={this.state.sanitized}
           />
         ) : (
-          <PlainView title={title} content={this.props.content} />
+          <PlainView
+            classes={classes}
+            title={title}
+            content={this.props.content}
+          />
         )}
       </div>
     )
@@ -174,7 +183,9 @@ const PlainView = ({ classes, title, slug, content }) => (
     {/* Attachments login */}
     <h4>Attachments</h4>
     <hr />
-    <AttachmentIcon /> AttachmentIcon
+    <IconButton className={classes.printVAtt}>
+      <AttachmentIcon /> AttachmentIcon
+    </IconButton>
   </div>
 )
 

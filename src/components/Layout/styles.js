@@ -8,6 +8,12 @@ const styles = theme => ({
   flex: {
     flex: 1
   },
+  closeButton: {
+    position: 'relative',
+    top: '25px',
+    left: '35px',
+    marginBottom: '15px'
+  },
   link: {
     textDecoration: 'none'
   },
