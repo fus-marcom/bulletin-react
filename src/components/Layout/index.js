@@ -129,16 +129,20 @@ class Layout extends Component {
             btnDrawerOpen={this.state.btnDrawerOpen}
             toggleDrawer={this.toggleDrawer}
           />
-          <IconButton className={classes.closeButton}>
-            <CloseIcon
-              className="no-print"
-              onClick={this.handleLayoutChange}
-              style={this.state.viewType === 'print' ? {} : { display: 'none' }}
-            />
+          <IconButton
+            className="no-print"
+            style={
+              this.state.viewType === 'print'
+                ? { top: '5px', left: '30px', position: 'relative', zIndex: 1 }
+                : { display: 'none' }
+            }
+            onClick={this.handleLayoutChange}
+          >
+            <CloseIcon />
           </IconButton>
           <div className={classes.appFrame}>
             <main
-              style={this.state.viewType === 'print' ? { margin: '15px' } : {}}
+              style={this.state.viewType === 'print' ? { margin: '0px' } : {}}
               className={classNames(classes.content, this.state.open)}
             >
               {// eslint-disable-next-line

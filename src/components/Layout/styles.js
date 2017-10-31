@@ -9,10 +9,10 @@ const styles = theme => ({
     flex: 1
   },
   closeButton: {
+    top: '5px',
+    left: '30px',
     position: 'relative',
-    top: '25px',
-    left: '35px',
-    marginBottom: '15px'
+    zIndex: 1
   },
   link: {
     textDecoration: 'none'

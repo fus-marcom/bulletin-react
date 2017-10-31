@@ -25,7 +25,8 @@ const styles = {
     color: '#ffb41f'
   },
   media: {
-    height: 250
+    height: 'auto',
+    width: '100%'
   },
   link: {
     color: 'inherit',
@@ -47,7 +48,7 @@ const CardImage = ({ mediaStyle, imageURL, slug }) => {
 
   return (
     <Link to={`/post/${slug}`}>
-      <CardMedia className={mediaStyle} image={imageURL} />
+      <CardMedia className={mediaStyle} component="img" image={imageURL} />
     </Link>
   )
 }
