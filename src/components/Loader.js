@@ -13,7 +13,12 @@ const styles = theme => ({
 const Loader = props => {
   const classes = props.classes
   return (
-    <Grid container className={classes.root} justify="center" align="center">
+    <Grid
+      container
+      className={classes.root}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={4} sm={3} md={2}>
         <CircularProgress size={100} />
       </Grid>

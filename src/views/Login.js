@@ -35,7 +35,7 @@ class Login extends Component {
           className={this.props.classes.heightvh}
           container
           justify="center"
-          align="center"
+          alignItems="center"
         >
           <Grid item xs={8} sm={5} md={4}>
             <Card>
