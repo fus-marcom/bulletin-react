@@ -6,9 +6,8 @@ import AttachmentIcon from 'material-ui-icons/Attachment'
 const Attachments = ({ attachments }) => {
   return (
     <div>
-      <Typography type="headline" gutterBottom>
-        Attachments:
-      </Typography>
+      <br />
+      <Typography type="button">Attachments:</Typography>
 
       <Typography gutterBottom>
         <Button dense color="primary">
