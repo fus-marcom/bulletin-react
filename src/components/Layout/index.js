@@ -6,7 +6,9 @@ import TopBar from './appbar'
 import SideBar from './drawer'
 import Tooltip from 'material-ui/Tooltip'
 import Button from 'material-ui/Button'
+import IconButton from 'material-ui/IconButton'
 import AddIcon from 'material-ui-icons/Add'
+import CloseIcon from 'material-ui-icons/Close'
 import styles from './styles'
 import debounce from 'lodash.debounce'
 import { withApollo } from 'react-apollo'
@@ -127,16 +129,20 @@ class Layout extends Component {
             btnDrawerOpen={this.state.btnDrawerOpen}
             toggleDrawer={this.toggleDrawer}
           />
-          <button
+          <IconButton
             className="no-print"
+            style={
+              this.state.viewType === 'print'
+                ? { top: '5px', left: '30px', position: 'relative', zIndex: 1 }
+                : { display: 'none' }
+            }
             onClick={this.handleLayoutChange}
-            style={this.state.viewType === 'print' ? {} : { display: 'none' }}
           >
-            Return to normal view
-          </button>
+            <CloseIcon />
+          </IconButton>
           <div className={classes.appFrame}>
             <main
-              style={this.state.viewType === 'print' ? { margin: '15px' } : {}}
+              style={this.state.viewType === 'print' ? { margin: '0px' } : {}}
               className={classNames(classes.content, this.state.open)}
             >
               {// eslint-disable-next-line
