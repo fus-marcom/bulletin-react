@@ -3,11 +3,16 @@ body {
   padding: 0 !important;
 }
 
+p {
+	font-size: 18px;
+	font-weight: 400;
+}
+
 header {
   padding-right: 0 !important;
 }
 @media print
-{    
+{
     .no-print, .no-print *
     {
         display: none !important;
