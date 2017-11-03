@@ -86,6 +86,13 @@ class Layout extends Component {
     this.setState({ open: false })
   }
 
+  handleClosePV = () => {
+    const view = window.localStorage.getItem('l-type')
+    this.setState({
+      viewType: view
+    })
+  }
+
   handleLogout = () => {
     // eslint-disable-next-line
     window.location.href = 'http://localhost:8080/logout'
@@ -133,10 +140,10 @@ class Layout extends Component {
             className="no-print"
             style={
               this.state.viewType === 'print'
-                ? { top: '5px', left: '30px', position: 'relative', zIndex: 1 }
+                ? { top: '5px', left: '90%', position: 'absolute', zIndex: 1 }
                 : { display: 'none' }
             }
-            onClick={this.handleLayoutChange}
+            onClick={this.handleClosePV}
           >
             <CloseIcon />
           </IconButton>
