@@ -39,6 +39,10 @@ const styles = {
   printVAtt: {
     width: 'auto',
     fontSize: '18px'
+  },
+  cardClass: {
+    fontSize: '18px',
+    fontWeight: 400
   }
 }
 
@@ -147,7 +151,7 @@ const CardView = ({
         >
           {postDate}
         </Typography>
-        <Typography type="body2" gutterBottom>
+        <Typography type="body2" className={classes.cardClass} gutterBottom>
           {content}
           {cRead && (
             <Link className={classes.continue} to={`/post/${slug}`}>
