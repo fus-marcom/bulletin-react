@@ -93,6 +93,9 @@ const styles = theme => ({
     position: 'fixed',
     bottom: 40,
     right: 40
+  },
+  formControl: {
+    width: '100%'
   }
 })
 

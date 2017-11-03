@@ -49,3 +49,11 @@ export const PostSearchQuery = gql`
   }
   ${postFragment}
 `
+export const FilterDateQuery = gql`
+  query PostSearchQuery($year: Int, $month: Int) {
+    posts(where: { dateQuery: { year: $year, month: $month } }) {
+      ...PostData
+    }
+  }
+  ${postFragment}
+`
