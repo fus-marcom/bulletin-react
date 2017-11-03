@@ -25,7 +25,7 @@ const displayCategories = props => {
     <div>
       <Link to={`/category/`} className={classes.link}>
         <ListItem button>
-          <ListItemText secondary={`All`} />
+          <ListItemText secondary={`All`} className="drawer-item" />
         </ListItem>
       </Link>
       {data.categories &&
@@ -36,7 +36,10 @@ const displayCategories = props => {
             className={classes.link}
           >
             <ListItem button>
-              <ListItemText secondary={category.node.name} />
+              <ListItemText
+                secondary={category.node.name}
+                className="drawer-item"
+              />
             </ListItem>
           </Link>
         ))}
@@ -146,7 +149,10 @@ class SideComponent extends Component {
         <Divider />
         <Link to="/" className={classes.link}>
           <ListItem button>
-            <ListItemText secondary="Current Bulletin" />
+            <ListItemText
+              secondary="Current Bulletin"
+              className="drawer-item"
+            />
           </ListItem>
         </Link>
         <Divider />
@@ -155,29 +161,37 @@ class SideComponent extends Component {
             <ListItemIcon>
               <AlarmClock />
             </ListItemIcon>
-            <ListItemText inset secondary="Take Action" />
+            <ListItemText
+              className="drawer-item"
+              inset
+              secondary="Take Action"
+            />
           </ListItem>
         </Link>
         <Divider />
-        <ListSubheader>Categories</ListSubheader>
+        <ListSubheader className="drawer-item">Categories</ListSubheader>
         {displayCategories(this.props)}
         <Divider />
         <ListItem button onClick={this.toggleForm}>
           <ListItemIcon>
             <ClockIcon />
           </ListItemIcon>
-          <ListItemText inset primary="Filter By Date" />
+          <ListItemText
+            className="drawer-item"
+            inset
+            primary="Filter By Date"
+          />
         </ListItem>
         {form}
         <Divider />
         <ListItem button onClick={this.props.toggleDrawer}>
-          <ListItemText secondary={'Submit Announcement'} />
+          <ListItemText
+            className="drawer-item"
+            secondary={'Submit Announcement'}
+          />
         </ListItem>
         <ListItem button>
-          <ListItemText secondary={'Classic Mode'} />
-        </ListItem>
-        <ListItem button>
-          <ListItemText secondary={'Help'} />
+          <ListItemText className="drawer-item" secondary={'Help'} />
         </ListItem>
       </div>
     )

@@ -68,6 +68,9 @@ const styles = theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar
   },
+  drawerItem: {
+    fontSize: '16px'
+  },
   content: {
     width: '100%',
     padding: theme.spacing.unit * 3,

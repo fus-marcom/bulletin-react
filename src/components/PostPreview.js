@@ -42,7 +42,8 @@ const styles = {
   },
   cardClass: {
     fontSize: '18px',
-    fontWeight: 400
+    fontWeight: 400,
+    lineHeight: 1.5
   }
 }
 
