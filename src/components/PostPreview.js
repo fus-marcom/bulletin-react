@@ -127,7 +127,7 @@ const CardView = ({
   <div>
     <Card className={classes.card} style={style}>
       <CardImage mediaStyle={classes.media} imageURL={imageURL} slug={slug} />
-      <CardContent>
+      <CardContent style={{ paddingBottom: '5px' }}>
         <Typography type="caption" className={classes.categoryColor}>
           {category.toUpperCase()}
         </Typography>

@@ -15,7 +15,8 @@ const styles = theme => ({
     zIndex: 1
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    color: 'inherit'
   },
   root: {
     width: '100%',
