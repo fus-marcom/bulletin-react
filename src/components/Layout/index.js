@@ -3,7 +3,7 @@ import { withStyles, MuiThemeProvider } from 'material-ui/styles'
 import classNames from 'classnames'
 import theme from './fusTheme'
 import TopBar from './appbar'
-import SideBar from './drawer'
+import Drawer from './drawer'
 import Tooltip from 'material-ui/Tooltip'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
@@ -30,7 +30,8 @@ class Layout extends Component {
     searchStyles: { display: 'none' },
     searchIconStyles: { display: 'block' },
     searchPosts: undefined,
-    searchText: ''
+    searchText: '',
+    showSearch: false
   }
   componentWillMount () {
     const layoutType = window.localStorage.getItem('l-type') || 'list'
@@ -123,6 +124,7 @@ class Layout extends Component {
             searchStyles={this.state.searchStyles}
             searchIconStyles={this.state.searchIconStyles}
             handleSearchToggle={this.handleSearchToggle}
+            showSearch={this.state.showSearch}
             viewtype={this.state.viewType}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
@@ -136,7 +138,7 @@ class Layout extends Component {
             handlePrintIcon={this.handlePrintIcon}
             style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
-          <SideBar
+          <Drawer
             handleFilterDate={this.handleFilterDate}
             open={this.state.open}
             classes={this.props.classes}

@@ -7,6 +7,7 @@ import MenuIcon from 'material-ui-icons/Menu'
 import ViewQuiltIcon from 'material-ui-icons/ViewQuilt'
 import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import SearchIcon from 'material-ui-icons/Search'
+import CloseIcon from 'material-ui-icons/Close'
 import PrintIcon from 'material-ui-icons/Print'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import Menu, { MenuItem } from 'material-ui/Menu'
@@ -22,6 +23,7 @@ const TopBar = ({
   searchIconStyles,
   handleAnyInputChange,
   handleSearchToggle,
+  showSearch,
   openSearch,
   handleDrawerOpen,
   handleClick,
@@ -53,20 +55,42 @@ const TopBar = ({
           >
             Bulletin
           </Typography>
-          <TextField
-            onChange={handleAnyInputChange}
-            style={searchStyles}
-            name="searchText"
-          />
-          <Tooltip title="Search" placement="bottom" style={searchIconStyles}>
-            <IconButton
-              onClick={handleSearchToggle}
-              color="primary"
-              aria-label="Search"
-            >
-              <SearchIcon />
-            </IconButton>
-          </Tooltip>
+          {showSearch ? (
+            <div>
+              {' '}
+              <TextField
+                onChange={handleAnyInputChange}
+                style={searchStyles}
+                name="searchText"
+                placeholder="Search"
+                autoFocus
+              />
+              <Tooltip
+                title="Close Search"
+                placement="bottom"
+                style={searchStyles}
+              >
+                <IconButton
+                  onClick={handleSearchToggle}
+                  color="primary"
+                  aria-label="Close Search"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
+          ) : (
+            <Tooltip title="Search" placement="bottom" style={searchIconStyles}>
+              <IconButton
+                onClick={handleSearchToggle}
+                color="primary"
+                aria-label="Search"
+              >
+                <SearchIcon />
+              </IconButton>
+            </Tooltip>
+          )}
+
           <Tooltip
             title={viewtype === 'grid' ? 'List View' : 'Grid View'}
             placement="bottom"
