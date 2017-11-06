@@ -27,8 +27,6 @@ class Layout extends Component {
     openMenu: false,
     viewType: 'list',
     btnDrawerOpen: false,
-    searchStyles: { display: 'none' },
-    searchIconStyles: { display: 'block' },
     searchPosts: undefined,
     searchText: '',
     showSearch: false
@@ -50,10 +48,7 @@ class Layout extends Component {
       .then(res => this.setState({ searchPosts: res.data.posts }))
   }
   handleSearchToggle = () => {
-    this.setState({
-      searchIconStyles: this.state.searchStyles,
-      searchStyles: this.state.searchIconStyles
-    })
+    this.setState(state => ({ showSearch: !this.state.showSearch }))
   }
   handleDrawerOpen = () => {
     this.setState({ open: true })

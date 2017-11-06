@@ -19,8 +19,6 @@ const TopBar = ({
   classes,
   open,
   openMenu,
-  searchStyles,
-  searchIconStyles,
   handleAnyInputChange,
   handleSearchToggle,
   showSearch,
@@ -57,19 +55,13 @@ const TopBar = ({
           </Typography>
           {showSearch ? (
             <div>
-              {' '}
               <TextField
                 onChange={handleAnyInputChange}
-                style={searchStyles}
                 name="searchText"
                 placeholder="Search"
                 autoFocus
               />
-              <Tooltip
-                title="Close Search"
-                placement="bottom"
-                style={searchStyles}
-              >
+              <Tooltip title="Close Search" placement="bottom">
                 <IconButton
                   onClick={handleSearchToggle}
                   color="primary"
@@ -80,7 +72,7 @@ const TopBar = ({
               </Tooltip>
             </div>
           ) : (
-            <Tooltip title="Search" placement="bottom" style={searchIconStyles}>
+            <Tooltip title="Search" placement="bottom">
               <IconButton
                 onClick={handleSearchToggle}
                 color="primary"
