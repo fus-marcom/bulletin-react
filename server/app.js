@@ -13,8 +13,8 @@ const cors = require('cors') // Cors origin policy
 const mail = require('./email')
 const multer = require('multer')
 const session = require('express-session')
+const passport = require('passport')
 const MongoStore = require('connect-mongo')(session)
-const passwordless = require('passwordless')
 
 const multerOptions = {
   storage: multer.memoryStorage()
@@ -66,12 +66,51 @@ app.use(
     store: new MongoStore({ url: process.env.DB_HOST })
   })
 )
+app.use(passport.initialize())
+app.use(passport.session())
 
-require('./auth')(app)
+require('./auth')(passport)
+
+app.get(
+  '/auth/microsoft',
+  passport.authenticate('windowslive', {
+    failureRedirect: 'http://localhost:3000/login'
+  })
+)
+
+app.get(
+  '/auth/microsoft/callback',
+  passport.authenticate('windowslive', {
+    failureRedirect: encodeURI(
+      'http://localhost:3000/login?error=Use valid franciscan email'
+    )
+  }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('http://localhost:3000')
+  }
+)
 /*
 FOR AUTHENTICATION I WILL GO FOR THIS APPROACHs
 app.use('*', ssoAuthenticationMiddleware)
 */
+
+app.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('http://localhost:3000/login')
+})
+
+app.use('/check_auth', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json({
+      ok: true
+    })
+  } else {
+    res.status('401').json({
+      ok: false
+    })
+  }
+})
 
 // Graphiql GUI for API Testing...
 app.use(
@@ -99,6 +138,13 @@ app.post(
   }
 )
 
+function ensureAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.sendStatus(401)
+}
+
 // Making WP API Available by using remote gql server strategy
 introspectSchema(fetcher)
   .then(schema => {
@@ -108,7 +154,7 @@ introspectSchema(fetcher)
     })
     app.use(
       '/graphql',
-      passwordless.restricted(),
+      ensureAuthenticated,
       bodyParser.json(),
       graphqlExpress({ schema: gqlschema })
     )

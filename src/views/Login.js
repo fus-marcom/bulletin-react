@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import Card, { CardActions, CardContent } from 'material-ui/Card'
+import Card, { CardContent } from 'material-ui/Card'
 import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
-import TextField from 'material-ui/TextField'
 import Grid from 'material-ui/Grid'
 import { withStyles, MuiThemeProvider } from 'material-ui/styles'
 import theme from '../components/Layout/fusTheme'
+import qs from 'qs'
 
 const styles = theme => ({
   heightvh: {
@@ -17,7 +16,18 @@ const styles = theme => ({
 })
 
 class Login extends Component {
-  state = { email: '', err: '', txt: 'Submit' }
+  state = { err: '' }
+  componentDidMount () {
+    if (this.props.location.search) {
+      const parsed = qs.parse(this.props.location.search)
+      if (parsed['?error']) {
+        this.setState({
+          err: parsed['?error']
+        })
+      }
+    }
+  }
+
   componentWillMount () {
     // eslint-disable-next-line
     fetch('http://localhost:8080/check_auth', {
@@ -39,75 +49,28 @@ class Login extends Component {
         >
           <Grid item xs={8} sm={5} md={4}>
             <Card>
-              <form onSubmit={this.handleSubmit}>
-                <CardContent>
-                  <Typography type="display1" component="h2">
-                    Login
-                  </Typography>
-                  <TextField
-                    error={!!this.state.err}
-                    name="email"
-                    label={this.state.err ? this.state.err : 'Email'}
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                    fullWidth
-                    margin={'normal'}
-                    type="email"
-                    required
-                  />
-                </CardContent>
-                <CardActions>
-                  <Button type="submit" raised color="primary">
-                    {this.state.txt}
-                  </Button>
-                </CardActions>
-              </form>
+              <CardContent>
+                <Button
+                  type="submit"
+                  onClick={this.handleLogin}
+                  raised
+                  color="primary"
+                >
+                  LOGIN USING MICROSOFT
+                </Button>
+                <br />
+                {this.state.err && (
+                  <p style={{ color: 'red' }}>{this.state.err}</p>
+                )}
+              </CardContent>
             </Card>
           </Grid>
         </Grid>
       </MuiThemeProvider>
     )
   }
-  handleSubmit = e => {
-    e.preventDefault()
-    this.setState({
-      err: '',
-      txt: 'Submitting'
-    })
-    // eslint-disable-next-line
-    fetch('http://localhost:8080/sendtoken', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user: this.state.email
-      })
-    })
-      .then(res => res.status)
-      .then(res => {
-        if (res === 200) {
-          this.setState({
-            txt: 'Email has been sent'
-          })
-        } else if (res === 401) {
-          this.setState({
-            err: 'Use a valid franciscan email',
-            txt: 'Submit'
-          })
-        }
-      })
-      .catch(e => {
-        this.setState({
-          err: 'This email is not sent',
-          txt: 'Submit'
-        })
-      })
-  }
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+  handleLogin = () => {
+    window.location.href = 'http://localhost:8080/auth/microsoft/callback'
   }
 }
 
